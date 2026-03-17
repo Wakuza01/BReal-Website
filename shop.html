@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — B-Real Natural Beauty</title>
+  <meta name="description" content="Shop B-Real Natural Beauty's full range of plant-based skincare, haircare, soaps and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="site-logo">
+        <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="36" stroke="#4a7060" stroke-width="1.5" fill="none"/>
+          <line x1="40" y1="62" x2="40" y2="18" stroke="#4a7060" stroke-width="1" opacity="0.4"/>
+          <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#4a7060" opacity="0.55"/>
+          <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#4a7060" opacity="0.55"/>
+          <path d="M40 50 Q31 42 35 32 Q42 40 40 50Z" fill="#4a7060" opacity="0.4"/>
+          <path d="M40 50 Q49 42 45 32 Q38 40 40 50Z" fill="#4a7060" opacity="0.4"/>
+          <text x="40" y="72" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9" fill="#2d4438" font-weight="600" letter-spacing="1">B-Real</text>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">B-Real</span>
+          <span class="logo-tagline">Natural Beauty</span>
+        </div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="business-clients.html" class="nav-link">Business Clients</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Shopping cart">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="shop.html" class="nav-link active">Shop</a>
+  <a href="business-clients.html" class="nav-link">Business Clients</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<!-- ===== SHOP HEADER ===== -->
+<section class="shop-header">
+  <div class="container">
+    <span class="section-label">Our Products</span>
+    <h1>Shop All Products</h1>
+    <div class="shop-filter-pills">
+      <button class="pill active" data-filter="all">All Products</button>
+      <button class="pill" data-filter="skincare">Skincare</button>
+      <button class="pill" data-filter="haircare">Haircare</button>
+      <button class="pill" data-filter="soaps">Soaps & Bars</button>
+      <button class="pill" data-filter="body">Body</button>
+      <button class="pill" data-filter="lip-care">Lip Care</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GIFT BANNER ===== -->
+<div class="container" style="padding-top:40px;">
+  <div class="gift-banner">
+    <div class="gift-banner-text">
+      <h3>Build a Personalised Gift</h3>
+      <p>Select products, packaging and add-ons to create the perfect gift for someone special.</p>
+    </div>
+    <a href="build-a-gift.html" class="btn btn-outline-cream btn-lg">Build a Gift →</a>
+  </div>
+</div>
+
+<!-- ===== SHOP LAYOUT ===== -->
+<div class="container">
+  <div class="shop-layout">
+
+    <!-- Sidebar -->
+    <aside class="shop-sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-title">Category</p>
+        <label class="filter-option"><input type="radio" name="cat" value="all" checked> All Products</label>
+        <label class="filter-option"><input type="radio" name="cat" value="skincare"> Skincare</label>
+        <label class="filter-option"><input type="radio" name="cat" value="haircare"> Haircare</label>
+        <label class="filter-option"><input type="radio" name="cat" value="soaps"> Soaps & Bars</label>
+        <label class="filter-option"><input type="radio" name="cat" value="body"> Body</label>
+        <label class="filter-option"><input type="radio" name="cat" value="lip-care"> Lip Care</label>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-title">Price Range</p>
+        <div class="price-range">
+          <span>R0</span>
+          <input type="range" min="0" max="500" value="500" id="price-filter">
+          <span id="price-val">R500</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Products -->
+    <div class="shop-main">
+      <div class="shop-toolbar">
+        <span class="result-count" id="result-count">14 products</span>
+        <select class="sort-select" id="sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+
+      <div class="products-grid products-grid-3" id="products-grid">
+
+        <!-- Skincare -->
+        <div class="product-card" data-category="skincare" data-price="85">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8d4,#ddd0b8);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#d4a843 0%,#a87830 100%);">
+                  <span class="prod-bottle-label-text">Moisture<br>Boost</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Skincare</span>
+            <h3 class="product-name">Moisture Boost</h3>
+            <p class="product-description">Hydrating Facial Oil Blend. Locks in moisture for a dewy glow.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R85</span>
+              <button class="add-to-cart-btn" data-name="Moisture Boost" data-price="85">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="skincare" data-price="85">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#e8e4d8,#d8d0c4);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#c8b87a 0%,#a09040 100%);">
+                  <span class="prod-bottle-label-text">Spot<br>Control</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Skincare</span>
+            <h3 class="product-name">Spot Control</h3>
+            <p class="product-description">Targeted Blemish Oil. Tea tree and neem calm breakouts fast.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R85</span>
+              <button class="add-to-cart-btn" data-name="Spot Control" data-price="85">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="skincare" data-price="85">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede4,#e0d8cc);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#e8dfc4 0%,#c8b498 100%);">
+                  <span class="prod-bottle-label-text" style="color:rgba(0,0,0,0.45);">Glow</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Skincare</span>
+            <h3 class="product-name">Glow</h3>
+            <p class="product-description">Brightening Facial Oil. Rose hip and jojoba for luminous skin.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R85</span>
+              <button class="add-to-cart-btn" data-name="Glow" data-price="85">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="skincare" data-price="95">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#e8f4ec,#c8e0d4);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap" style="background:#8ab4a0;border-radius:0;width:40px;height:18px;margin:0 auto -4px;"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#c8e4d8 0%,#a8ccc0 100%);width:56px;height:90px;border-radius:4px;">
+                  <span class="prod-bottle-label-text" style="color:rgba(0,0,0,0.4);">Aloe<br>Ferox</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Skincare</span>
+            <h3 class="product-name">Aloe Ferox Gel</h3>
+            <p class="product-description">Soothing 50ml gel. Hydrates, calms and nourishes skin naturally.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R95</span>
+              <button class="add-to-cart-btn" data-name="Aloe Ferox Gel" data-price="95">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Haircare -->
+        <div class="product-card" data-category="haircare" data-price="120">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#dde8e4,#c4d8d0);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap" style="background:#8ab4a0;"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#7fa090 0%,#4a7060 100%);">
+                  <span class="prod-bottle-label-text">Revive<br>Scalp Oil</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Haircare</span>
+            <h3 class="product-name">Revive Scalp Oil</h3>
+            <p class="product-description">Nourishing scalp treatment. Stimulates growth. 30ml/50ml/100ml.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R120</span>
+              <button class="add-to-cart-btn" data-name="Revive Scalp Oil" data-price="120">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="haircare" data-price="150">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede8,#e4dcd4);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap" style="background:#e0e0e0;border-radius:0 0 4px 4px;width:48px;height:20px;margin:0 auto -4px;"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#f0ede8 0%,#d4cdc4 100%);width:60px;height:110px;border-radius:4px;border:1px solid #d0c8c0;">
+                  <span class="prod-bottle-label-text" style="color:rgba(0,0,0,0.4);font-size:7px;">Botanical<br>Repair<br>Shampoo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Haircare</span>
+            <h3 class="product-name">Botanical Repair Shampoo</h3>
+            <p class="product-description">Gentle cleansing shampoo that repairs and strengthens damaged hair.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R150</span>
+              <button class="add-to-cart-btn" data-name="Botanical Repair Shampoo" data-price="150">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="haircare" data-price="150">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede8,#e4dcd4);">
+              <div class="prod-bottle">
+                <div class="prod-bottle-cap" style="background:#e0e0e0;border-radius:0 0 4px 4px;width:48px;height:20px;margin:0 auto -4px;"></div>
+                <div class="prod-bottle-body" style="background:linear-gradient(180deg,#e8e4de 0%,#ccc6be 100%);width:60px;height:110px;border-radius:4px;border:1px solid #d0c8c0;">
+                  <span class="prod-bottle-label-text" style="color:rgba(0,0,0,0.4);font-size:7px;">Botanical<br>Repair<br>Conditioner</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Haircare</span>
+            <h3 class="product-name">Botanical Repair Conditioner</h3>
+            <p class="product-description">Deep conditioning treatment. Softens and detangles with plant extracts.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R150</span>
+              <button class="add-to-cart-btn" data-name="Botanical Repair Conditioner" data-price="150">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="haircare" data-price="180">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#e8e4d4,#d8d0c0);">
+              <div style="width:80px;height:60px;background:linear-gradient(145deg,#e8e0cc,#d0c8b0);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.12);position:relative;overflow:hidden;">
+                <div style="position:absolute;inset:0;background:rgba(255,255,255,0.15);clip-path:ellipse(30% 40% at 30% 30%);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Haircare</span>
+            <h3 class="product-name">Nourishing Hair Mask</h3>
+            <p class="product-description">Intensive 3-in-1 hair mask. 50ml deep conditioning treatment.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R180</span>
+              <button class="add-to-cart-btn" data-name="Nourishing Hair Mask" data-price="180">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soaps & Bars -->
+        <div class="product-card" data-category="soaps" data-price="70">
+          <div class="product-image" style="background:#f0f0f0;">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#e8e8e8,#d8d8d8);">
+              <div class="prod-bar charcoal-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Soaps & Bars</span>
+            <h3 class="product-name">Charcoal Mint Facial Bar</h3>
+            <p class="product-description">Deep cleansing charcoal bar with refreshing mint. Draws out impurities.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R70</span>
+              <button class="add-to-cart-btn" data-name="Charcoal Mint Facial Bar" data-price="70">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="soaps" data-price="75">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8d4,#e0d4c0);">
+              <div class="prod-bar clay-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Soaps & Bars</span>
+            <h3 class="product-name">Bentonite Clay Facial Bar</h3>
+            <p class="product-description">Purifying clay bar. Tightens pores and balances oily skin.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R75</span>
+              <button class="add-to-cart-btn" data-name="Bentonite Clay Facial Bar" data-price="75">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="soaps" data-price="70">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#e8dcd4,#d4c8bc);">
+              <div class="prod-bar sandalwood-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Soaps & Bars</span>
+            <h3 class="product-name">Sandalwood Charcoal Bar</h3>
+            <p class="product-description">Warming sandalwood and charcoal soap for deep, thorough cleansing.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R70</span>
+              <button class="add-to-cart-btn" data-name="Sandalwood Charcoal Bar" data-price="70">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="soaps" data-price="65">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#ece4f4,#d8d0e8);">
+              <div class="prod-bar lavender-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.12));"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Soaps & Bars</span>
+            <h3 class="product-name">Lavender Facial Soap</h3>
+            <p class="product-description">Gentle lavender soap that soothes sensitive skin and promotes calm.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R65</span>
+              <button class="add-to-cart-btn" data-name="Lavender Facial Soap" data-price="65">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="product-card" data-category="body" data-price="120">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8e0,#e4d8cc);">
+              <div class="prod-tube" style="width:44px;height:110px;background:linear-gradient(180deg,#e8dfc4 0%,#d0c4a0 100%);border-radius:4px 4px 8px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.12);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:15%;width:20%;height:100%;background:rgba(255,255,255,0.25);border-radius:4px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Body</span>
+            <h3 class="product-name">Mystic Foot Repair Cream</h3>
+            <p class="product-description">Intensive heel and foot repair cream. Rich plant butters for cracked skin.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R120</span>
+              <button class="add-to-cart-btn" data-name="Mystic Foot Repair Cream" data-price="120">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lip Care -->
+        <div class="product-card" data-category="lip-care" data-price="45">
+          <div class="product-image">
+            <div class="prod-visual" style="background:linear-gradient(145deg,#f8f0e8,#f0e4d4);">
+              <div style="width:24px;height:80px;background:linear-gradient(180deg,#f0d4b0 0%,#d4a870 100%);border-radius:4px 4px 6px 6px;box-shadow:0 4px 10px rgba(0,0,0,0.15);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:20%;width:30%;height:100%;background:rgba(255,255,255,0.25);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Lip Care</span>
+            <h3 class="product-name">Natural Lip Balm</h3>
+            <p class="product-description">Moisturising lip balm made with beeswax and natural plant oils. 15ml.</p>
+            <div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="product-footer">
+              <span class="product-price">R45</span>
+              <button class="add-to-cart-btn" data-name="Natural Lip Balm" data-price="45">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+    </div><!-- /shop-main -->
+  </div><!-- /shop-layout -->
+</div><!-- /container -->
+
+<!-- ===== YOCO PAYMENT NOTE ===== -->
+<section class="section--sm" style="background:var(--cream-mid); text-align:center; border-top:1px solid var(--border-light);">
+  <div class="container">
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">Secure checkout powered by</p>
+    <div style="display:inline-flex;align-items:center;gap:12px;padding:14px 28px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7060" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <span style="font-weight:600;font-size:15px;color:var(--dark);">Yoco</span>
+      <span style="font-size:13px;color:var(--text-muted);">· Safe · Secure · Local</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" stroke="#7fa090" stroke-width="1.5" fill="none"/>
+            <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#7fa090" opacity="0.6"/>
+            <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#7fa090" opacity="0.6"/>
+          </svg>
+          <div class="logo-text"><span class="logo-name">B-Real</span><span class="logo-tagline">Natural Beauty</span></div>
+        </a>
+        <p>Plant-based skincare and haircare crafted with nature's finest ingredients. Real beauty, honestly made in South Africa.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Shop</p>
+        <ul class="footer-links">
+          <li><a href="shop.html?cat=skincare">Skincare</a></li>
+          <li><a href="shop.html?cat=haircare">Haircare</a></li>
+          <li><a href="shop.html?cat=soaps">Soaps & Bars</a></li>
+          <li><a href="shop.html?cat=lip-care">Lip Care</a></li>
+          <li><a href="build-a-gift.html">Build a Gift</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Business</p>
+        <ul class="footer-links">
+          <li><a href="business-clients.html#white-label">White Label</a></li>
+          <li><a href="business-clients.html#private-label">Private Label</a></li>
+          <li><a href="business-clients.html#custom">Custom Products</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 B-Real Natural Beauty. All rights reserved.</p>
+      <div class="social-links"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
