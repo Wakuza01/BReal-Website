@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product — B-Real Natural Beauty</title>
+  <meta name="description" content="Shop B-Real Natural Beauty's plant-based skincare and haircare range.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="images/Breal-Logo.jpeg">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="site-logo">
+        <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
+        <div class="logo-text">
+          <span class="logo-name">B-Real</span>
+          <span class="logo-tagline">Natural Beauty</span>
+        </div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="business-clients.html" class="nav-link">Business Clients</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Shopping cart" onclick="window.location='cart.html'">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Cart <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="shop.html" class="nav-link active">Shop</a>
+  <a href="business-clients.html" class="nav-link">Business Clients</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<!-- ===== PRODUCT DETAIL ===== -->
+<section class="pd-section">
+  <div class="container">
+    <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="pd-breadcrumb-sep">›</span>
+      <a href="shop.html">Shop</a>
+      <span class="pd-breadcrumb-sep">›</span>
+      <a href="#" id="pd-crumb-cat">Category</a>
+      <span class="pd-breadcrumb-sep">›</span>
+      <span id="pd-crumb-name">Product</span>
+    </nav>
+
+    <div class="pd-layout">
+      <!-- Gallery -->
+      <div class="pd-gallery">
+        <div class="pd-gallery-main" id="pd-gallery-main">
+          <svg class="pd-gallery-decor" width="200" height="260" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+            <line x1="80" y1="160" x2="80" y2="20" stroke="#4a7060" stroke-width="2"/>
+            <path d="M80 80 Q58 65 62 45 Q80 60 80 80Z" fill="#4a7060"/>
+            <path d="M80 80 Q102 65 98 45 Q80 60 80 80Z" fill="#4a7060"/>
+            <path d="M80 110 Q58 95 62 72 Q80 88 80 110Z" fill="#4a7060" opacity="0.7"/>
+            <path d="M80 110 Q102 95 98 72 Q80 88 80 110Z" fill="#4a7060" opacity="0.7"/>
+          </svg>
+          <div id="pd-visual-wrap"></div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="pd-info">
+        <span class="pd-category" id="pd-category">—</span>
+        <h1 class="pd-title" id="pd-title">Loading…</h1>
+        <div class="pd-rating" id="pd-rating"></div>
+        <div class="pd-price" id="pd-price"></div>
+        <p class="pd-description" id="pd-description-short"></p>
+        <div id="pd-sizes-wrap"></div>
+        <div class="pd-qty-row">
+          <div class="pd-qty">
+            <button class="pd-qty-btn" id="pd-qty-minus" aria-label="Decrease">−</button>
+            <span class="pd-qty-val" id="pd-qty-val">1</span>
+            <button class="pd-qty-btn" id="pd-qty-plus" aria-label="Increase">+</button>
+          </div>
+          <button class="btn btn-primary btn-lg" id="pd-add-to-cart">Add to Cart</button>
+        </div>
+        <div class="pd-badges">
+          <span class="pd-badge">🌿 100% Natural</span>
+          <span class="pd-badge">🇿🇦 Made in SA</span>
+          <span class="pd-badge">🐰 Cruelty-Free</span>
+          <span class="pd-badge">🚫 Silicone-Free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCT INFO TABS ===== -->
+<section class="pd-tabs-section reveal">
+  <div class="container">
+    <div class="pd-tab-nav">
+      <button class="pd-tab-btn active" data-pd-tab="pd-description">Description</button>
+      <button class="pd-tab-btn" data-pd-tab="pd-ingredients">Key Ingredients</button>
+      <button class="pd-tab-btn" data-pd-tab="pd-how-to-use">How to Use</button>
+    </div>
+    <div class="pd-tab-panel active" id="pd-description"></div>
+    <div class="pd-tab-panel" id="pd-ingredients"></div>
+    <div class="pd-tab-panel" id="pd-how-to-use"></div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="pd-reviews-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">What Our Customers Say</span>
+      <h2>Customer Reviews</h2>
+      <div id="pd-rating-summary" style="display:flex;align-items:center;gap:12px;justify-content:center;margin-top:10px;"></div>
+    </div>
+    <div class="reviews-grid reveal-children" id="pd-reviews"></div>
+  </div>
+</section>
+
+<!-- ===== RELATED PRODUCTS ===== -->
+<section class="pd-related-section">
+  <div class="container">
+    <div class="section-header"><h2>You Might Also Like</h2></div>
+    <div class="products-grid products-grid-3 reveal-children" id="pd-related" style="margin-top:40px;"></div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-logo">
+          <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
+          <div class="logo-text"><span class="logo-name">B-Real</span><span class="logo-tagline">Natural Beauty</span></div>
+        </a>
+        <p>Plant-based skincare and haircare crafted with nature's finest ingredients. Real beauty, honestly made in South Africa.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Shop</p>
+        <ul class="footer-links">
+          <li><a href="shop.html?cat=skincare">Skincare</a></li>
+          <li><a href="shop.html?cat=haircare">Haircare</a></li>
+          <li><a href="shop.html?cat=soaps">Soaps & Bars</a></li>
+          <li><a href="shop.html?cat=lip-care">Lip Care</a></li>
+          <li><a href="build-a-gift.html">Build a Gift</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Business</p>
+        <ul class="footer-links">
+          <li><a href="business-clients.html#white-label">White Label</a></li>
+          <li><a href="business-clients.html#private-label">Private Label</a></li>
+          <li><a href="business-clients.html#custom">Custom Products</a></li>
+          <li><a href="business-clients.html">Request a Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#whatsapp">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 B-Real Natural Beauty. All rights reserved.</p>
+      <div class="social-links"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  /* ---- Load product from URL ?id= param ---- */
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get('id') || 'revive-scalp-oil';
+  var p = BREAL_PRODUCTS[id];
+  if (!p) { window.location.href = 'shop.html'; return; }
+
+  /* ---- Page title & meta ---- */
+  document.title = p.name + ' — B-Real Natural Beauty';
+
+  /* ---- Breadcrumb ---- */
+  document.getElementById('pd-crumb-name').textContent = p.name;
+  var crumbCat = document.getElementById('pd-crumb-cat');
+  crumbCat.textContent = p.category;
+  crumbCat.href = 'shop.html?cat=' + p.categorySlug;
+
+  /* ---- Visual ---- */
+  document.getElementById('pd-gallery-main').style.background = p.visual.bg;
+  var wrap = document.getElementById('pd-visual-wrap');
+  if (p.visual.type === 'bottle') {
+    wrap.innerHTML = '<div class="pd-bottle-wrap"><div class="pd-bottle-cap" style="background:' + p.visual.capColor + ';"></div><div class="pd-bottle-body" style="background:' + p.visual.bodyGradient + ';"><div class="pd-bottle-shine"></div><div class="pd-bottle-label" style="color:' + (p.visual.labelDark ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.92)') + ';">' + p.visual.labelText + '</div></div></div>';
+  } else if (p.visual.type === 'bar') {
+    wrap.innerHTML = '<div style="width:140px;height:100px;border-radius:14px;background:' + p.visual.bodyGradient + ';box-shadow:0 16px 40px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:' + (p.visual.labelDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)') + ';text-align:center;">' + p.visual.labelText.replace('<br>', '\n').split('\n').join('<br>') + '</span></div>';
+  } else if (p.visual.type === 'tube') {
+    wrap.innerHTML = '<div class="pd-bottle-wrap"><div class="pd-bottle-cap" style="background:' + p.visual.capColor + ';width:52px;height:20px;border-radius:4px 4px 0 0;"></div><div style="width:80px;height:180px;background:' + p.visual.bodyGradient + ';border-radius:4px 4px 12px 12px;box-shadow:0 16px 40px rgba(0,0,0,0.2);position:relative;overflow:hidden;"><div style="position:absolute;top:0;left:15%;width:18%;height:100%;background:rgba(255,255,255,0.2);border-radius:4px;"></div><div style="position:absolute;bottom:20%;width:100%;text-align:center;font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:' + (p.visual.labelDark ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.92)') + ';">' + p.visual.labelText + '</div></div></div>';
+  } else if (p.visual.type === 'jar') {
+    wrap.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 16px 32px rgba(0,0,0,0.18));"><div style="width:110px;height:22px;background:' + p.visual.capColor + ';border-radius:6px 6px 0 0;"></div><div style="width:130px;height:90px;background:' + p.visual.bodyGradient + ';border-radius:4px 4px 10px 10px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:' + (p.visual.labelDark ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.9)') + ';text-align:center;">' + p.visual.labelText + '</span></div></div>';
+  } else if (p.visual.type === 'stick') {
+    wrap.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.15));"><div style="width:32px;height:20px;background:' + p.visual.capColor + ';border-radius:4px 4px 0 0;"></div><div style="width:32px;height:130px;background:' + p.visual.bodyGradient + ';border-radius:2px 2px 8px 8px;position:relative;overflow:hidden;"><div style="position:absolute;top:0;left:20%;width:25%;height:100%;background:rgba(255,255,255,0.25);"></div></div></div>';
+  }
+
+  /* ---- Info ---- */
+  document.getElementById('pd-category').textContent = p.category;
+  document.getElementById('pd-title').textContent = p.name;
+  document.getElementById('pd-description-short').textContent = p.longDesc;
+
+  /* ---- Rating ---- */
+  var stars = '★★★★★'.slice(0, Math.round(p.rating));
+  document.getElementById('pd-rating').innerHTML = stars.split('').map(function(s){ return '<span class="star">' + s + '</span>'; }).join('') + '<span class="pd-rating-count">' + p.rating + ' · ' + p.reviewCount + ' reviews</span>';
+  document.getElementById('pd-rating-summary').innerHTML = '<span style="font-size:22px;color:var(--warm-tan);">★★★★★</span><span style="font-size:1.1rem;font-weight:700;color:var(--dark);">' + p.rating + '</span><span style="font-size:14px;color:var(--text-muted);">based on ' + p.reviewCount + ' reviews</span>';
+
+  /* ---- Price & sizes ---- */
+  var currentPrice = p.price;
+  document.getElementById('pd-price').innerHTML = 'R' + currentPrice + (p.sizes ? ' <span class="pd-price-note">/ ' + Object.keys(p.sizes)[0] + '</span>' : '');
+  document.getElementById('pd-add-to-cart').dataset.name = p.name;
+  document.getElementById('pd-add-to-cart').dataset.price = currentPrice;
+
+  var sizesWrap = document.getElementById('pd-sizes-wrap');
+  if (p.sizes) {
+    var sizesHTML = '<label class="pd-option-label">Size</label><div class="pd-sizes">';
+    var first = true;
+    Object.keys(p.sizes).forEach(function (size) {
+      sizesHTML += '<button class="pd-size-btn' + (first ? ' active' : '') + '" data-price="' + p.sizes[size] + '" data-size="' + size + '">' + size + '</button>';
+      first = false;
+    });
+    sizesHTML += '</div>';
+    sizesWrap.innerHTML = sizesHTML;
+  }
+
+  /* ---- Description tab ---- */
+  var benefitsHTML = p.benefits.map(function (b) {
+    return '<div class="pd-benefit-item"><span class="pd-benefit-icon">✓</span><span>' + b + '</span></div>';
+  }).join('');
+  document.getElementById('pd-description').innerHTML = '<p>' + p.longDesc + '</p><div class="pd-benefits-list">' + benefitsHTML + '</div>';
+
+  /* ---- Ingredients tab ---- */
+  var ingrHTML = '<p>Every ingredient is chosen for a purpose. No fillers, no synthetics.</p><div class="pd-ingredients-grid reveal-children">' +
+    p.ingredients.map(function (ing) {
+      return '<div class="pd-ingredient-card"><p class="pd-ingredient-name">' + ing.name + '</p><p class="pd-ingredient-role">' + ing.role + '</p></div>';
+    }).join('') + '</div>';
+  document.getElementById('pd-ingredients').innerHTML = ingrHTML;
+
+  /* ---- How to Use tab ---- */
+  var howHTML = '<p>Follow these steps for best results.</p><div class="pd-steps">' +
+    p.howToUse.map(function (step, i) {
+      return '<div class="pd-step"><div class="pd-step-num">' + (i + 1) + '</div><p class="pd-step-text">' + step + '</p></div>';
+    }).join('') + '</div>';
+  document.getElementById('pd-how-to-use').innerHTML = howHTML;
+
+  /* ---- Reviews ---- */
+  var reviewSets = {
+    default: [
+      { stars: '★★★★★', text: 'Absolutely love this product. My skin has never felt better — I\'ve been using it for 6 weeks and the results are incredible. Will never go back to anything else.', author: 'Naledi M.', location: 'Johannesburg · Verified buyer' },
+      { stars: '★★★★★', text: 'I was sceptical at first but this really works. Natural ingredients that actually deliver. My whole family uses it now.', author: 'Thandi K.', location: 'Cape Town · Verified buyer' },
+      { stars: '★★★★☆', text: 'Great product, smells amazing and absorbs beautifully. Shipping was fast too. Will definitely reorder.', author: 'Miriam van D.', location: 'Pretoria · Verified buyer' }
+    ]
+  };
+  var reviews = reviewSets[id] || reviewSets.default;
+  document.getElementById('pd-reviews').innerHTML = reviews.map(function (r) {
+    return '<div class="review-card"><div class="review-stars">' + r.stars + '</div><p class="review-text">"' + r.text + '"</p><p class="review-author">' + r.author + '</p><p class="review-location">' + r.location + '</p></div>';
+  }).join('');
+
+  /* ---- Related products ---- */
+  var relatedEl = document.getElementById('pd-related');
+  if (p.related && p.related.length) {
+    relatedEl.innerHTML = p.related.slice(0, 3).map(function (relId) {
+      var rel = BREAL_PRODUCTS[relId];
+      if (!rel) return '';
+      return '<div class="product-card" onclick="window.location=\'product.html?id=' + rel.id + '\'" style="cursor:pointer;">' +
+        '<div class="product-image"><div class="prod-visual" style="background:' + rel.visual.bg + ';display:flex;align-items:center;justify-content:center;">' +
+        '<div style="font-size:11px;font-weight:700;text-align:center;color:var(--text-muted);padding:8px;">' + rel.name + '</div>' +
+        '</div></div>' +
+        '<div class="product-info">' +
+        '<span class="product-category">' + rel.category + '</span>' +
+        '<h3 class="product-name">' + rel.name + '</h3>' +
+        '<p class="product-description">' + rel.shortDesc + '</p>' +
+        '<div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>' +
+        '<div class="product-footer"><span class="product-price">R' + rel.price + '</span>' +
+        '<button class="add-to-cart-btn" data-name="' + rel.name + '" data-price="' + rel.price + '">+</button>' +
+        '</div></div></div>';
+    }).join('');
+  }
+})();
+</script>
+</body>
+</html>

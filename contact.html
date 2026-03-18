@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="images/Breal-Logo.jpeg">
 </head>
 <body>
 
@@ -20,15 +22,7 @@
         <span></span><span></span><span></span>
       </button>
       <a href="index.html" class="site-logo">
-        <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="36" stroke="#4a7060" stroke-width="1.5" fill="none"/>
-          <line x1="40" y1="62" x2="40" y2="18" stroke="#4a7060" stroke-width="1" opacity="0.4"/>
-          <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#4a7060" opacity="0.55"/>
-          <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#4a7060" opacity="0.55"/>
-          <path d="M40 50 Q31 42 35 32 Q42 40 40 50Z" fill="#4a7060" opacity="0.4"/>
-          <path d="M40 50 Q49 42 45 32 Q38 40 40 50Z" fill="#4a7060" opacity="0.4"/>
-          <text x="40" y="72" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9" fill="#2d4438" font-weight="600" letter-spacing="1">B-Real</text>
-        </svg>
+        <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
         <div class="logo-text">
           <span class="logo-name">B-Real</span>
           <span class="logo-tagline">Natural Beauty</span>
@@ -112,35 +106,48 @@
         <!-- FAQ -->
         <div style="margin-top:48px;">
           <h3 style="margin-bottom:20px;font-size:1.2rem;">Frequently Asked Questions</h3>
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <details style="border-bottom:1px solid var(--border-light);padding:16px 0;">
-              <summary style="font-weight:600;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          <div class="faq-list reveal-children">
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
                 How long does shipping take?
-                <span style="color:var(--sage);font-size:18px;">+</span>
-              </summary>
-              <p style="font-size:14px;color:var(--text-muted);margin-top:10px;line-height:1.65;">Standard shipping typically takes 3–5 business days within South Africa. Express shipping (1–2 days) is available at checkout.</p>
-            </details>
-            <details style="border-bottom:1px solid var(--border-light);padding:16px 0;">
-              <summary style="font-weight:600;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Standard shipping typically takes 3–5 business days within South Africa. Express shipping (1–2 days) is available at checkout.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
                 Do you ship internationally?
-                <span style="color:var(--sage);font-size:18px;">+</span>
-              </summary>
-              <p style="font-size:14px;color:var(--text-muted);margin-top:10px;line-height:1.65;">Currently we ship within South Africa. International shipping is coming soon — contact us to be notified when your country is available.</p>
-            </details>
-            <details style="border-bottom:1px solid var(--border-light);padding:16px 0;">
-              <summary style="font-weight:600;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Currently we ship within South Africa. International shipping is coming soon — contact us to be notified when your country is available.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
                 Are your products suitable for sensitive skin?
-                <span style="color:var(--sage);font-size:18px;">+</span>
-              </summary>
-              <p style="font-size:14px;color:var(--text-muted);margin-top:10px;line-height:1.65;">Most of our products are formulated for all skin types including sensitive skin. Always check individual product descriptions and patch test before full use.</p>
-            </details>
-            <details style="padding:16px 0;">
-              <summary style="font-weight:600;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Most of our products are formulated for all skin types including sensitive skin. Always check individual product descriptions and patch test before full use.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
                 What payment methods do you accept?
-                <span style="color:var(--sage);font-size:18px;">+</span>
-              </summary>
-              <p style="font-size:14px;color:var(--text-muted);margin-top:10px;line-height:1.65;">We accept all major cards, EFT and Instant EFT via our Yoco payment portal. Payment is secure and encrypted.</p>
-            </details>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>We accept all major cards, EFT and Instant EFT via our Yoco payment portal. Payment is secure and encrypted.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -197,11 +204,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="site-logo">
-          <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="36" stroke="#7fa090" stroke-width="1.5" fill="none"/>
-            <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#7fa090" opacity="0.6"/>
-            <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#7fa090" opacity="0.6"/>
-          </svg>
+          <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
           <div class="logo-text"><span class="logo-name">B-Real</span><span class="logo-tagline">Natural Beauty</span></div>
         </a>
         <p>Plant-based skincare and haircare crafted with nature's finest ingredients. Real beauty, honestly made in South Africa.</p>

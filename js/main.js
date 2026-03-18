@@ -2,6 +2,48 @@
    B-Real Natural Beauty — Main JavaScript
    ============================================ */
 
+/* ---- FAQ Accordion ---- */
+(function () {
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+/* ---- Scroll Reveal (Intersection Observer) ---- */
+(function () {
+  var revealEls = document.querySelectorAll('.reveal, .reveal-children');
+  if (!revealEls.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(function (el) { observer.observe(el); });
+})();
+
 /* ---- Sticky header shadow ---- */
 (function () {
   const header = document.getElementById('site-header');
@@ -103,6 +145,64 @@ function showCartFeedback(name) {
 document.addEventListener('DOMContentLoaded', function () {
   updateCartUI();
 
+  /* ---- Product Detail Page ---- */
+  // Quantity control
+  var qtyMinus = document.getElementById('pd-qty-minus');
+  var qtyPlus  = document.getElementById('pd-qty-plus');
+  var qtyVal   = document.getElementById('pd-qty-val');
+  var pdAddBtn = document.getElementById('pd-add-to-cart');
+  if (qtyMinus && qtyPlus && qtyVal) {
+    qtyMinus.addEventListener('click', function () {
+      var n = parseInt(qtyVal.textContent, 10);
+      if (n > 1) qtyVal.textContent = n - 1;
+    });
+    qtyPlus.addEventListener('click', function () {
+      qtyVal.textContent = parseInt(qtyVal.textContent, 10) + 1;
+    });
+  }
+
+  // Size selector — update price display and cart data-price
+  document.querySelectorAll('.pd-size-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.pd-size-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      if (pdAddBtn) pdAddBtn.dataset.price = btn.dataset.price;
+      var priceEl = document.querySelector('.pd-price');
+      if (priceEl) priceEl.firstChild.textContent = 'R' + btn.dataset.price + ' ';
+    });
+  });
+
+  // Product detail Add to Cart (respects qty)
+  if (pdAddBtn) {
+    pdAddBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var name  = pdAddBtn.dataset.name;
+      var price = parseInt(pdAddBtn.dataset.price, 10);
+      var qty   = qtyVal ? parseInt(qtyVal.textContent, 10) : 1;
+      for (var i = 0; i < qty; i++) { addToCart(name, price); }
+    });
+  }
+
+  /* ---- Product Detail Tabs ---- */
+  var pdTabBtns = document.querySelectorAll('.pd-tab-btn');
+  if (pdTabBtns.length > 0) {
+    pdTabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.dataset.pdTab;
+        pdTabBtns.forEach(function (b) { b.classList.remove('active'); });
+        document.querySelectorAll('.pd-tab-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        var panel = document.getElementById(target);
+        if (panel) {
+          panel.classList.add('active');
+          panel.querySelectorAll('.reveal:not(.is-visible), .reveal-children:not(.is-visible)').forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+        }
+      });
+    });
+  }
+
   document.querySelectorAll('.add-to-cart-btn').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -124,7 +224,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         btn.classList.add('active');
         var panel = document.getElementById(target);
-        if (panel) panel.classList.add('active');
+        if (panel) {
+          panel.classList.add('active');
+          // Trigger scroll-reveal for any hidden items now visible inside the panel
+          panel.querySelectorAll('.reveal:not(.is-visible), .reveal-children:not(.is-visible)').forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+        }
       });
     });
 
@@ -390,4 +496,202 @@ function checkoutGift() {
   }
   // In production: integrate with Yoco payment API
   alert('Redirecting to Yoco checkout...\n\nIntegrate your Yoco payment link here.');
+}
+
+/* ---- Cart button → navigate to cart.html ---- */
+document.addEventListener('DOMContentLoaded', function () {
+  var cartBtn = document.getElementById('cart-btn');
+  if (cartBtn) {
+    cartBtn.addEventListener('click', function () {
+      window.location.href = 'cart.html';
+    });
+  }
+});
+
+/* ============================================
+   CART PAGE
+   ============================================ */
+(function () {
+  var cartItemsList = document.getElementById('cart-items-list');
+  if (!cartItemsList) return; // only run on cart.html
+
+  var SHIPPING_FLAT = 65;
+  var FREE_THRESHOLD = 500;
+
+  function categoryColor(slug) {
+    var map = { skincare: '#d4e4dc', haircare: '#c8ddd4', soaps: '#e8cfc0', 'lip-care': '#f0d8d4' };
+    return map[slug] || '#e0ece7';
+  }
+
+  function initials(name) {
+    return name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2).toUpperCase();
+  }
+
+  function productByName(name) {
+    if (typeof BREAL_PRODUCTS === 'undefined') return null;
+    return Object.values(BREAL_PRODUCTS).find(function (p) { return p.name === name; }) || null;
+  }
+
+  function renderCart() {
+    cart = JSON.parse(localStorage.getItem('breal-cart') || '[]');
+
+    var emptyEl    = document.getElementById('cart-empty');
+    var actionsEl  = document.getElementById('cart-actions');
+    var summaryEl  = document.getElementById('order-summary');
+    var upsellSec  = document.getElementById('upsell-section');
+
+    if (cart.length === 0) {
+      cartItemsList.innerHTML = '';
+      if (emptyEl)   emptyEl.style.display   = 'flex';
+      if (actionsEl) actionsEl.style.display  = 'none';
+      if (summaryEl) summaryEl.style.display  = 'none';
+      if (upsellSec) upsellSec.style.display  = 'none';
+      return;
+    }
+
+    if (emptyEl)   emptyEl.style.display   = 'none';
+    if (actionsEl) actionsEl.style.display  = 'flex';
+    if (summaryEl) summaryEl.style.display  = '';
+    if (upsellSec) upsellSec.style.display  = '';
+
+    cartItemsList.innerHTML = cart.map(function (item, idx) {
+      var p    = productByName(item.name);
+      var slug = p ? p.categorySlug : '';
+      var bg   = categoryColor(slug);
+      var init = initials(item.name);
+
+      return (
+        '<div class="cart-item">' +
+          '<div class="cart-item-info">' +
+            '<div class="cart-item-visual" style="background:' + bg + ';font-size:12px;font-weight:700;color:var(--sage-dark);">' + init + '</div>' +
+            '<div class="cart-item-details">' +
+              '<div class="cart-item-name">' + item.name + '</div>' +
+              '<div class="cart-item-unit-price">R' + item.price + ' each</div>' +
+              '<button class="cart-item-remove" data-idx="' + idx + '">Remove</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cart-item-qty">' +
+            '<button class="cart-qty-btn" data-action="minus" data-idx="' + idx + '">−</button>' +
+            '<span class="cart-qty-num">' + item.qty + '</span>' +
+            '<button class="cart-qty-btn" data-action="plus" data-idx="' + idx + '">+</button>' +
+          '</div>' +
+          '<div class="cart-item-total">R' + (item.price * item.qty) + '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    updateCartTotals();
+    bindCartItemEvents();
+    populateUpsell();
+  }
+
+  function updateCartTotals() {
+    var subtotal  = cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+    var shipping  = subtotal >= FREE_THRESHOLD ? 0 : SHIPPING_FLAT;
+    var total     = subtotal + shipping;
+    var remaining = FREE_THRESHOLD - subtotal;
+
+    var elSubtotal      = document.getElementById('summary-subtotal');
+    var elTotal         = document.getElementById('summary-total');
+    var elShippingLine  = document.getElementById('shipping-line');
+    var elFreeMsg       = document.getElementById('free-shipping-msg');
+    var elNote          = document.getElementById('shipping-note');
+
+    if (elSubtotal) elSubtotal.textContent = 'R' + subtotal;
+    if (elTotal)    elTotal.textContent    = 'R' + total;
+
+    if (shipping === 0) {
+      if (elShippingLine) elShippingLine.style.display = 'none';
+      if (elFreeMsg)      elFreeMsg.style.display      = 'flex';
+      if (elNote)         elNote.textContent            = '';
+    } else {
+      if (elShippingLine) elShippingLine.style.display = 'flex';
+      if (elFreeMsg)      elFreeMsg.style.display      = 'none';
+      if (elNote)         elNote.textContent            = 'Spend R' + remaining + ' more to unlock free shipping!';
+    }
+  }
+
+  function bindCartItemEvents() {
+    // Qty buttons
+    document.querySelectorAll('.cart-qty-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx    = parseInt(btn.dataset.idx, 10);
+        var action = btn.dataset.action;
+        if (action === 'plus') {
+          cart[idx].qty += 1;
+        } else {
+          if (cart[idx].qty > 1) {
+            cart[idx].qty -= 1;
+          } else {
+            cart.splice(idx, 1);
+          }
+        }
+        updateCartUI();
+        renderCart();
+      });
+    });
+
+    // Remove buttons
+    document.querySelectorAll('.cart-item-remove').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.dataset.idx, 10);
+        cart.splice(idx, 1);
+        updateCartUI();
+        renderCart();
+      });
+    });
+  }
+
+  function populateUpsell() {
+    var grid = document.getElementById('upsell-grid');
+    if (!grid || typeof BREAL_PRODUCTS === 'undefined') return;
+
+    var cartNames  = cart.map(function (i) { return i.name; });
+    var picks      = Object.values(BREAL_PRODUCTS)
+      .filter(function (p) { return !cartNames.includes(p.name); })
+      .slice(0, 4);
+
+    grid.innerHTML = picks.map(function (p) {
+      var bg   = p.visual && p.visual.bg ? p.visual.bg : categoryColor(p.categorySlug);
+      var safe = p.name.replace(/'/g, "\\'");
+      return (
+        '<div class="product-card" onclick="window.location=\'product.html?id=' + p.id + '\'" style="cursor:pointer;">' +
+          '<div class="product-visual" style="background:' + bg + ';"></div>' +
+          '<div class="product-info">' +
+            '<p class="product-category">' + p.category + '</p>' +
+            '<h3 class="product-name">' + p.name + '</h3>' +
+            '<div class="product-footer">' +
+              '<span class="product-price">R' + p.price + '</span>' +
+              '<button class="product-add-btn add-to-cart-btn" data-name="' + p.name + '" data-price="' + p.price + '" ' +
+                'aria-label="Add ' + p.name + ' to cart" onclick="event.stopPropagation();addToCart(\'' + safe + '\',' + p.price + ')">+</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  // Clear cart
+  var clearBtn = document.getElementById('cart-clear-btn');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function () {
+      if (confirm('Remove all items from your cart?')) {
+        cart = [];
+        updateCartUI();
+        renderCart();
+      }
+    });
+  }
+
+  renderCart();
+})();
+
+/* ---- Checkout handler (global, called by onclick in cart.html) ---- */
+function handleCheckout() {
+  if (!cart || cart.length === 0) {
+    alert('Your cart is empty.');
+    return;
+  }
+  // TODO: Replace with your real Yoco payment link
+  alert('Redirecting to Yoco checkout…\n\nIntegrate your Yoco payment link here to complete the integration.');
 }

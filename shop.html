@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/jpeg" href="images/Breal-Logo.jpeg">
 </head>
 <body>
 
@@ -20,15 +22,7 @@
         <span></span><span></span><span></span>
       </button>
       <a href="index.html" class="site-logo">
-        <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="36" stroke="#4a7060" stroke-width="1.5" fill="none"/>
-          <line x1="40" y1="62" x2="40" y2="18" stroke="#4a7060" stroke-width="1" opacity="0.4"/>
-          <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#4a7060" opacity="0.55"/>
-          <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#4a7060" opacity="0.55"/>
-          <path d="M40 50 Q31 42 35 32 Q42 40 40 50Z" fill="#4a7060" opacity="0.4"/>
-          <path d="M40 50 Q49 42 45 32 Q38 40 40 50Z" fill="#4a7060" opacity="0.4"/>
-          <text x="40" y="72" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9" fill="#2d4438" font-weight="600" letter-spacing="1">B-Real</text>
-        </svg>
+        <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
         <div class="logo-text">
           <span class="logo-name">B-Real</span>
           <span class="logo-tagline">Natural Beauty</span>
@@ -125,7 +119,7 @@
       <div class="products-grid products-grid-3" id="products-grid">
 
         <!-- Skincare -->
-        <div class="product-card" data-category="skincare" data-price="85">
+        <div class="product-card" data-category="skincare" data-price="85" onclick="window.location='product.html?id=moisture-boost'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8d4,#ddd0b8);">
               <div class="prod-bottle">
@@ -148,7 +142,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="skincare" data-price="85">
+        <div class="product-card" data-category="skincare" data-price="85" onclick="window.location='product.html?id=spot-control'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#e8e4d8,#d8d0c4);">
               <div class="prod-bottle">
@@ -171,7 +165,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="skincare" data-price="85">
+        <div class="product-card" data-category="skincare" data-price="85" onclick="window.location='product.html?id=glow'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede4,#e0d8cc);">
               <div class="prod-bottle">
@@ -194,7 +188,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="skincare" data-price="95">
+        <div class="product-card" data-category="skincare" data-price="95" onclick="window.location='product.html?id=aloe-ferox-gel'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#e8f4ec,#c8e0d4);">
               <div class="prod-bottle">
@@ -218,7 +212,7 @@
         </div>
 
         <!-- Haircare -->
-        <div class="product-card" data-category="haircare" data-price="120">
+        <div class="product-card" data-category="haircare" data-price="120" onclick="window.location='product.html?id=revive-scalp-oil'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#dde8e4,#c4d8d0);">
               <div class="prod-bottle">
@@ -241,7 +235,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="haircare" data-price="150">
+        <div class="product-card" data-category="haircare" data-price="150" onclick="window.location='product.html?id=botanical-shampoo'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede8,#e4dcd4);">
               <div class="prod-bottle">
@@ -264,7 +258,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="haircare" data-price="150">
+        <div class="product-card" data-category="haircare" data-price="150" onclick="window.location='product.html?id=botanical-conditioner'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0ede8,#e4dcd4);">
               <div class="prod-bottle">
@@ -287,7 +281,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="haircare" data-price="180">
+        <div class="product-card" data-category="haircare" data-price="180" onclick="window.location='product.html?id=nourishing-hair-mask'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#e8e4d4,#d8d0c0);">
               <div style="width:80px;height:60px;background:linear-gradient(145deg,#e8e0cc,#d0c8b0);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.12);position:relative;overflow:hidden;">
@@ -308,7 +302,7 @@
         </div>
 
         <!-- Soaps & Bars -->
-        <div class="product-card" data-category="soaps" data-price="70">
+        <div class="product-card" data-category="soaps" data-price="70" onclick="window.location='product.html?id=charcoal-mint-bar'" style="cursor:pointer;">
           <div class="product-image" style="background:#f0f0f0;">
             <div class="prod-visual" style="background:linear-gradient(145deg,#e8e8e8,#d8d8d8);">
               <div class="prod-bar charcoal-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));"></div>
@@ -326,7 +320,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="soaps" data-price="75">
+        <div class="product-card" data-category="soaps" data-price="75" onclick="window.location='product.html?id=bentonite-clay-bar'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8d4,#e0d4c0);">
               <div class="prod-bar clay-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));"></div>
@@ -344,7 +338,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="soaps" data-price="70">
+        <div class="product-card" data-category="soaps" data-price="70" onclick="window.location='product.html?id=sandalwood-bar'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#e8dcd4,#d4c8bc);">
               <div class="prod-bar sandalwood-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));"></div>
@@ -362,7 +356,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="soaps" data-price="65">
+        <div class="product-card" data-category="soaps" data-price="65" onclick="window.location='product.html?id=lavender-soap'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#ece4f4,#d8d0e8);">
               <div class="prod-bar lavender-bar" style="width:90px;height:65px;border-radius:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.12));"></div>
@@ -381,7 +375,7 @@
         </div>
 
         <!-- Body -->
-        <div class="product-card" data-category="body" data-price="120">
+        <div class="product-card" data-category="body" data-price="120" onclick="window.location='product.html?id=mystic-foot-cream'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f0e8e0,#e4d8cc);">
               <div class="prod-tube" style="width:44px;height:110px;background:linear-gradient(180deg,#e8dfc4 0%,#d0c4a0 100%);border-radius:4px 4px 8px 8px;box-shadow:0 4px 12px rgba(0,0,0,0.12);position:relative;overflow:hidden;">
@@ -402,7 +396,7 @@
         </div>
 
         <!-- Lip Care -->
-        <div class="product-card" data-category="lip-care" data-price="45">
+        <div class="product-card" data-category="lip-care" data-price="45" onclick="window.location='product.html?id=natural-lip-balm'" style="cursor:pointer;">
           <div class="product-image">
             <div class="prod-visual" style="background:linear-gradient(145deg,#f8f0e8,#f0e4d4);">
               <div style="width:24px;height:80px;background:linear-gradient(180deg,#f0d4b0 0%,#d4a870 100%);border-radius:4px 4px 6px 6px;box-shadow:0 4px 10px rgba(0,0,0,0.15);position:relative;overflow:hidden;">
@@ -445,11 +439,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="site-logo">
-          <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="36" stroke="#7fa090" stroke-width="1.5" fill="none"/>
-            <path d="M40 36 Q31 28 35 18 Q42 26 40 36Z" fill="#7fa090" opacity="0.6"/>
-            <path d="M40 36 Q49 28 45 18 Q38 26 40 36Z" fill="#7fa090" opacity="0.6"/>
-          </svg>
+          <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
           <div class="logo-text"><span class="logo-name">B-Real</span><span class="logo-tagline">Natural Beauty</span></div>
         </a>
         <p>Plant-based skincare and haircare crafted with nature's finest ingredients. Real beauty, honestly made in South Africa.</p>
