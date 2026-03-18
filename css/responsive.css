@@ -30,6 +30,7 @@ html, body {
 
   /* About */
   .ingredients-grid { grid-template-columns: repeat(2, 1fr); }
+  .commitments-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Gift builder */
   .packaging-options { grid-template-columns: repeat(3, 1fr); }
@@ -211,8 +212,9 @@ html, body {
   /* Tabs */
   .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
 
-  /* Mission cards on about page */
+  /* Mission cards + commitments on about page */
   .mission-cards { grid-template-columns: 1fr; }
+  .commitments-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Product detail */
   .pd-ingredients-grid { grid-template-columns: 1fr; }
