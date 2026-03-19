@@ -119,7 +119,7 @@ h4 { font-size: 1.05rem; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 110px;
   gap: 20px;
 }
 
@@ -131,7 +131,7 @@ h4 { font-size: 1.05rem; }
   text-decoration: none;
   flex-shrink: 0;
 }
-.logo-svg { height: 64px; width: auto; max-width: 200px; flex-shrink: 0; object-fit: contain; display: block; }
+.logo-svg { height: 100px; width: auto; max-width: 200px; flex-shrink: 0; object-fit: contain; display: block; }
 .logo-text { display: flex; flex-direction: column; line-height: 1; }
 .logo-name {
   font-family: 'Playfair Display', Georgia, serif;
@@ -230,7 +230,7 @@ h4 { font-size: 1.05rem; }
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 72px;
+  top: 110px;
   left: 0;
   right: 0;
   bottom: 0;
