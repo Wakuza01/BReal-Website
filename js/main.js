@@ -159,19 +159,14 @@ function closeVariantModal() {
 function triggerReveal(el) {
   if (!el) return;
   el.classList.remove('is-visible');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.disconnect();
-        }
-      });
-    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-    obs.observe(el);
-  } else {
-    el.classList.add('is-visible');
-  }
+  // Double rAF ensures browser renders the hidden state before transitioning
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      setTimeout(function() {
+        el.classList.add('is-visible');
+      }, 80);
+    });
+  });
 }
 
 function addToCart(name, price) {
@@ -843,7 +838,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<h3 class="product-name">' + p.name + '</h3>' +
             '<div class="product-footer">' +
               '<span class="product-price">R' + p.price + '</span>' +
-              '<button class="product-add-btn" data-product-id="' + p.id + '" ' +
+              '<button class="add-to-cart-btn" data-product-id="' + p.id + '" ' +
                 'aria-label="Add ' + p.name + ' to cart" onclick="event.stopPropagation();handleQuickAdd(\'' + p.id + '\')">+</button>' +
             '</div>' +
           '</div>' +
