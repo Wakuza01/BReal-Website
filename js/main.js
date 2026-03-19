@@ -96,6 +96,84 @@ function updateCartUI() {
   localStorage.setItem('breal-cart', JSON.stringify(cart));
 }
 
+/* ---- Variant Modal ---- */
+function handleQuickAdd(productId) {
+  if (typeof BREAL_PRODUCTS === 'undefined') return;
+  var p = BREAL_PRODUCTS[productId];
+  if (!p) return;
+  if (!p.sizes) {
+    addToCart(p.name, p.price);
+    return;
+  }
+  showVariantModal(p);
+}
+
+function showVariantModal(product) {
+  var existing = document.getElementById('variant-modal');
+  if (existing) existing.remove();
+
+  var sizeKeys = Object.keys(product.sizes);
+  var optionsHtml = sizeKeys.map(function(size) {
+    return '<button class="variant-modal-option" onclick="addVariantToCart(\'' +
+      product.name.replace(/'/g, "\\'") + '\',\'' + size + '\',' + product.sizes[size] + ')">' +
+      '<span class="variant-size">' + size + '</span>' +
+      '<span class="variant-price">R' + product.sizes[size] + '</span>' +
+      '</button>';
+  }).join('');
+
+  var modal = document.createElement('div');
+  modal.id = 'variant-modal';
+  modal.innerHTML =
+    '<div class="variant-modal-overlay" id="variant-overlay">' +
+      '<div class="variant-modal-card">' +
+        '<button class="variant-modal-close" onclick="closeVariantModal()" aria-label="Close">✕</button>' +
+        '<p class="variant-modal-sub">Select a size</p>' +
+        '<h3 class="variant-modal-title">' + product.name + '</h3>' +
+        '<div class="variant-modal-options">' + optionsHtml + '</div>' +
+      '</div>' +
+    '</div>';
+
+  document.getElementById('variant-overlay');
+  document.body.appendChild(modal);
+  document.getElementById('variant-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeVariantModal();
+  });
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() { modal.classList.add('open'); });
+  });
+}
+
+function addVariantToCart(name, size, price) {
+  addToCart(name + ' (' + size + ')', price);
+  closeVariantModal();
+}
+
+function closeVariantModal() {
+  var modal = document.getElementById('variant-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  setTimeout(function() { if (modal.parentNode) modal.remove(); }, 280);
+}
+
+/* ---- Reveal helper for dynamically populated grids ---- */
+function triggerReveal(el) {
+  if (!el) return;
+  el.classList.remove('is-visible');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    obs.observe(el);
+  } else {
+    el.classList.add('is-visible');
+  }
+}
+
 function addToCart(name, price) {
   var existing = cart.find(function (i) { return i.name === name; });
   if (existing) {
@@ -206,6 +284,11 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.add-to-cart-btn').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
+      var pid = btn.dataset.productId;
+      if (pid && typeof BREAL_PRODUCTS !== 'undefined' && BREAL_PRODUCTS[pid] && BREAL_PRODUCTS[pid].sizes) {
+        showVariantModal(BREAL_PRODUCTS[pid]);
+        return;
+      }
       var name = btn.dataset.name;
       var price = parseInt(btn.dataset.price, 10);
       addToCart(name, price);
@@ -751,8 +834,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .slice(0, 4);
 
     grid.innerHTML = picks.map(function (p) {
-      var bg   = p.visual && p.visual.bg ? p.visual.bg : categoryColor(p.categorySlug);
-      var safe = p.name.replace(/'/g, "\\'");
+      var bg = p.visual && p.visual.bg ? p.visual.bg : categoryColor(p.categorySlug);
       return (
         '<div class="product-card" onclick="window.location=\'product.html?id=' + p.id + '\'" style="cursor:pointer;">' +
           '<div class="product-visual" style="background:' + bg + ';"></div>' +
@@ -761,13 +843,15 @@ document.addEventListener('DOMContentLoaded', function () {
             '<h3 class="product-name">' + p.name + '</h3>' +
             '<div class="product-footer">' +
               '<span class="product-price">R' + p.price + '</span>' +
-              '<button class="product-add-btn add-to-cart-btn" data-name="' + p.name + '" data-price="' + p.price + '" ' +
-                'aria-label="Add ' + p.name + ' to cart" onclick="event.stopPropagation();addToCart(\'' + safe + '\',' + p.price + ')">+</button>' +
+              '<button class="product-add-btn" data-product-id="' + p.id + '" ' +
+                'aria-label="Add ' + p.name + ' to cart" onclick="event.stopPropagation();handleQuickAdd(\'' + p.id + '\')">+</button>' +
             '</div>' +
           '</div>' +
         '</div>'
       );
     }).join('');
+
+    triggerReveal(grid);
   }
 
   // Clear cart
