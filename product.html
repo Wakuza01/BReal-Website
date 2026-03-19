@@ -425,7 +425,7 @@
         '<p class="product-description">' + rel.shortDesc + '</p>' +
         '<div class="product-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>' +
         '<div class="product-footer"><span class="product-price">R' + rel.price + '</span>' +
-        '<button class="product-add-btn" data-product-id="' + rel.id + '" onclick="event.stopPropagation();handleQuickAdd(\'' + rel.id + '\')">+</button>' +
+        '<button class="add-to-cart-btn" data-product-id="' + rel.id + '" onclick="event.stopPropagation();handleQuickAdd(\'' + rel.id + '\')">+</button>' +
         '</div></div></div>';
     }).join('');
     if (typeof triggerReveal === 'function') triggerReveal(relatedEl);
