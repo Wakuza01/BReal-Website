@@ -7,7 +7,10 @@
 /* ============================================
    GLOBAL — prevent horizontal overflow on all viewports
    ============================================ */
-html, body {
+html {
+  max-width: 100%;
+}
+body {
   overflow-x: clip;
   max-width: 100%;
 }
@@ -45,6 +48,19 @@ html, body {
   .site-nav { display: none; }
   .header-actions .btn-lg { display: none; }
   .hamburger { display: flex; }
+  .logo-text { display: none; }
+  .cart-label { display: none; }
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  body { padding-top: 110px; }
+  .site-header .site-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+  .header-inner { position: relative; }
 
   /* ----- Hero ----- */
   .hero {
