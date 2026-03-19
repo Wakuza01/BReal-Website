@@ -573,7 +573,7 @@ h4 { font-size: 1.05rem; }
    BRAND CTA / START YOUR BRAND
    ============================================ */
 .brand-cta {
-  background: var(--sage-dark);
+  background: var(--sage);
   color: var(--white);
   padding: 72px 0;
 }
