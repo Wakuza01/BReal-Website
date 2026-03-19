@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="icon" type="image/jpeg" href="images/Breal-Logo.jpeg">
+  <link rel="icon" type="image/png" href="images/Breal-Logo.png">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
         <span></span><span></span><span></span>
       </button>
       <a href="index.html" class="site-logo">
-        <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
+        <img src="images/Breal-Logo.png" class="logo-svg" alt="B-Real Natural Beauty">
         <div class="logo-text">
           <span class="logo-name">B-Real</span>
           <span class="logo-tagline">Natural Beauty</span>
@@ -45,7 +45,6 @@
   </div>
 </header>
 
-<!-- Mobile Nav -->
 <nav class="mobile-nav" id="mobile-nav">
   <a href="index.html" class="nav-link">Home</a>
   <a href="shop.html" class="nav-link active">Shop</a>
@@ -68,7 +67,7 @@
     </nav>
 
     <div class="pd-layout">
-      <!-- Gallery -->
+      <!-- Left: Gallery -->
       <div class="pd-gallery">
         <div class="pd-gallery-main" id="pd-gallery-main">
           <svg class="pd-gallery-decor" width="200" height="260" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
@@ -82,44 +81,140 @@
         </div>
       </div>
 
-      <!-- Info -->
+      <!-- Right: Info -->
       <div class="pd-info">
         <span class="pd-category" id="pd-category">—</span>
         <h1 class="pd-title" id="pd-title">Loading…</h1>
         <div class="pd-rating" id="pd-rating"></div>
         <div class="pd-price" id="pd-price"></div>
-        <p class="pd-description" id="pd-description-short"></p>
+
+        <!-- Size dropdown -->
         <div id="pd-sizes-wrap"></div>
+
+        <!-- Quantity + Actions -->
         <div class="pd-qty-row">
           <div class="pd-qty">
             <button class="pd-qty-btn" id="pd-qty-minus" aria-label="Decrease">−</button>
             <span class="pd-qty-val" id="pd-qty-val">1</span>
             <button class="pd-qty-btn" id="pd-qty-plus" aria-label="Increase">+</button>
           </div>
-          <button class="btn btn-primary btn-lg" id="pd-add-to-cart">Add to Cart</button>
         </div>
+        <div class="pd-action-row">
+          <button class="btn btn-primary btn-lg" id="pd-add-to-cart">Add to Cart</button>
+          <button class="btn btn-tan btn-lg" id="pd-buy-now">Buy Now</button>
+        </div>
+
+        <!-- B2B / MOQ Section -->
+        <div class="pd-b2b-section" id="pd-b2b-section" style="display:none;">
+          <div class="pd-b2b-title">B2B / Bulk Order Options</div>
+          <div class="pd-b2b-row">
+            <label>Order Type:</label>
+            <div class="pd-b2b-toggle">
+              <button class="pd-b2b-toggle-btn active" data-type="white-label">White Label</button>
+              <button class="pd-b2b-toggle-btn" data-type="private-label">Private Label</button>
+            </div>
+          </div>
+          <div class="pd-b2b-row">
+            <label>Include Packaging?</label>
+            <div class="pd-b2b-toggle">
+              <button class="pd-b2b-toggle-btn active" data-pkg="no">No</button>
+              <button class="pd-b2b-toggle-btn" data-pkg="yes">Yes</button>
+            </div>
+          </div>
+          <div class="moq-notice no-moq" id="moq-notice">
+            <span class="moq-icon">✅</span>
+            <span>No minimum order quantity applies for white/private label <strong>without packaging</strong>. Order as many or as few units as you need.</span>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
         <div class="pd-badges">
           <span class="pd-badge">🌿 100% Natural</span>
           <span class="pd-badge">🇿🇦 Made in SA</span>
           <span class="pd-badge">🐰 Cruelty-Free</span>
           <span class="pd-badge">🚫 Silicone-Free</span>
         </div>
+
+        <!-- B2B toggle link -->
+        <div style="margin-top:16px;">
+          <button id="pd-b2b-toggle" style="background:none;border:none;color:var(--sage);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;text-underline-offset:3px;">
+            Ordering for your business? View B2B options →
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCT INFO TABS ===== -->
-<section class="pd-tabs-section reveal">
-  <div class="container">
-    <div class="pd-tab-nav">
-      <button class="pd-tab-btn active" data-pd-tab="pd-description">Description</button>
-      <button class="pd-tab-btn" data-pd-tab="pd-ingredients">Key Ingredients</button>
-      <button class="pd-tab-btn" data-pd-tab="pd-how-to-use">How to Use</button>
+<!-- ===== ACCORDION SECTIONS ===== -->
+<section class="pd-accordion-section">
+  <div class="pd-accordion">
+
+    <!-- Description -->
+    <div class="pd-accord-item open">
+      <button class="pd-accord-trigger" data-accord="pd-acc-description">
+        Product Description
+        <span class="pd-accord-chevron">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="pd-accord-body">
+        <div class="pd-accord-content" id="pd-acc-description"></div>
+      </div>
     </div>
-    <div class="pd-tab-panel active" id="pd-description"></div>
-    <div class="pd-tab-panel" id="pd-ingredients"></div>
-    <div class="pd-tab-panel" id="pd-how-to-use"></div>
+
+    <!-- Ingredients -->
+    <div class="pd-accord-item">
+      <button class="pd-accord-trigger" data-accord="pd-acc-ingredients">
+        Full Ingredients
+        <span class="pd-accord-chevron">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="pd-accord-body">
+        <div class="pd-accord-content" id="pd-acc-ingredients"></div>
+      </div>
+    </div>
+
+    <!-- How to Use -->
+    <div class="pd-accord-item">
+      <button class="pd-accord-trigger" data-accord="pd-acc-how-to-use">
+        How to Use
+        <span class="pd-accord-chevron">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="pd-accord-body">
+        <div class="pd-accord-content" id="pd-acc-how-to-use"></div>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div class="pd-accord-item">
+      <button class="pd-accord-trigger" data-accord="pd-acc-roi">
+        Return On Investment Potential
+        <span class="pd-accord-chevron">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="pd-accord-body">
+        <div class="pd-accord-content" id="pd-acc-roi"></div>
+      </div>
+    </div>
+
+    <!-- Shipping -->
+    <div class="pd-accord-item">
+      <button class="pd-accord-trigger" data-accord="pd-acc-shipping">
+        Shipping & Delivery
+        <span class="pd-accord-chevron">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="pd-accord-body">
+        <div class="pd-accord-content" id="pd-acc-shipping"></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -149,7 +244,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="site-logo">
-          <img src="images/Breal-Logo.jpeg" class="logo-svg" alt="B-Real Natural Beauty">
+          <img src="images/Breal-Logo.png" class="logo-svg" alt="B-Real Natural Beauty">
           <div class="logo-text"><span class="logo-name">B-Real</span><span class="logo-tagline">Natural Beauty</span></div>
         </a>
         <p>Plant-based skincare and haircare crafted with nature's finest ingredients. Real beauty, honestly made in South Africa.</p>
@@ -174,11 +269,11 @@
         </ul>
       </div>
       <div>
-        <p class="footer-col-title">Company</p>
+        <p class="footer-col-title">Legal</p>
         <ul class="footer-links">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="contact.html#whatsapp">WhatsApp Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="returns.html">Refund & Returns</a></li>
         </ul>
       </div>
     </div>
@@ -199,7 +294,7 @@
   var p = BREAL_PRODUCTS[id];
   if (!p) { window.location.href = 'shop.html'; return; }
 
-  /* ---- Page title & meta ---- */
+  /* ---- Page title ---- */
   document.title = p.name + ' — B-Real Natural Beauty';
 
   /* ---- Breadcrumb ---- */
@@ -226,68 +321,98 @@
   /* ---- Info ---- */
   document.getElementById('pd-category').textContent = p.category;
   document.getElementById('pd-title').textContent = p.name;
-  document.getElementById('pd-description-short').textContent = p.longDesc;
 
   /* ---- Rating ---- */
   var stars = '★★★★★'.slice(0, Math.round(p.rating));
   document.getElementById('pd-rating').innerHTML = stars.split('').map(function(s){ return '<span class="star">' + s + '</span>'; }).join('') + '<span class="pd-rating-count">' + p.rating + ' · ' + p.reviewCount + ' reviews</span>';
   document.getElementById('pd-rating-summary').innerHTML = '<span style="font-size:22px;color:var(--warm-tan);">★★★★★</span><span style="font-size:1.1rem;font-weight:700;color:var(--dark);">' + p.rating + '</span><span style="font-size:14px;color:var(--text-muted);">based on ' + p.reviewCount + ' reviews</span>';
 
-  /* ---- Price & sizes ---- */
+  /* ---- Price & size dropdown ---- */
   var currentPrice = p.price;
-  document.getElementById('pd-price').innerHTML = 'R' + currentPrice + (p.sizes ? ' <span class="pd-price-note">/ ' + Object.keys(p.sizes)[0] + '</span>' : '');
+  document.getElementById('pd-price').innerHTML = 'R<span id="pd-price-val">' + currentPrice + '</span>' + (p.sizes ? ' <span class="pd-price-note">/ ' + Object.keys(p.sizes)[0] + '</span>' : '');
   document.getElementById('pd-add-to-cart').dataset.name = p.name;
   document.getElementById('pd-add-to-cart').dataset.price = currentPrice;
+  document.getElementById('pd-buy-now').dataset.name = p.name;
+  document.getElementById('pd-buy-now').dataset.price = currentPrice;
 
   var sizesWrap = document.getElementById('pd-sizes-wrap');
   if (p.sizes) {
-    var sizesHTML = '<label class="pd-option-label">Size</label><div class="pd-sizes">';
-    var first = true;
-    Object.keys(p.sizes).forEach(function (size) {
-      sizesHTML += '<button class="pd-size-btn' + (first ? ' active' : '') + '" data-price="' + p.sizes[size] + '" data-size="' + size + '">' + size + '</button>';
-      first = false;
+    var opts = Object.keys(p.sizes).map(function(size) {
+      return '<option value="' + size + '" data-price="' + p.sizes[size] + '">' + size + ' — R' + p.sizes[size] + '</option>';
+    }).join('');
+    sizesWrap.innerHTML = '<div class="pd-size-select-wrap"><label class="pd-option-label">Select Size</label><select class="pd-size-select" id="pd-size-select">' + opts + '</select></div>';
+
+    document.getElementById('pd-size-select').addEventListener('change', function() {
+      var sel = this.options[this.selectedIndex];
+      var newPrice = parseInt(sel.dataset.price, 10);
+      currentPrice = newPrice;
+      document.getElementById('pd-price-val').textContent = newPrice;
+      document.getElementById('pd-add-to-cart').dataset.price = newPrice;
+      document.getElementById('pd-buy-now').dataset.price = newPrice;
     });
-    sizesHTML += '</div>';
-    sizesWrap.innerHTML = sizesHTML;
   }
 
-  /* ---- Description tab ---- */
-  var benefitsHTML = p.benefits.map(function (b) {
+  /* ---- Accordion content: Description ---- */
+  var benefitsHTML = p.benefits.map(function(b) {
     return '<div class="pd-benefit-item"><span class="pd-benefit-icon">✓</span><span>' + b + '</span></div>';
   }).join('');
-  document.getElementById('pd-description').innerHTML = '<p>' + p.longDesc + '</p><div class="pd-benefits-list">' + benefitsHTML + '</div>';
+  document.getElementById('pd-acc-description').innerHTML = '<p>' + p.longDesc + '</p><div class="pd-benefits-list">' + benefitsHTML + '</div>';
 
-  /* ---- Ingredients tab ---- */
-  var ingrHTML = '<p>Every ingredient is chosen for a purpose. No fillers, no synthetics.</p><div class="pd-ingredients-grid reveal-children">' +
-    p.ingredients.map(function (ing) {
+  /* ---- Accordion content: Ingredients ---- */
+  document.getElementById('pd-acc-ingredients').innerHTML =
+    '<p>Every ingredient is chosen for a purpose — no fillers, no synthetics.</p>' +
+    '<div class="pd-ingredients-grid">' +
+    p.ingredients.map(function(ing) {
       return '<div class="pd-ingredient-card"><p class="pd-ingredient-name">' + ing.name + '</p><p class="pd-ingredient-role">' + ing.role + '</p></div>';
     }).join('') + '</div>';
-  document.getElementById('pd-ingredients').innerHTML = ingrHTML;
 
-  /* ---- How to Use tab ---- */
-  var howHTML = '<p>Follow these steps for best results.</p><div class="pd-steps">' +
-    p.howToUse.map(function (step, i) {
+  /* ---- Accordion content: How to Use ---- */
+  document.getElementById('pd-acc-how-to-use').innerHTML =
+    '<p>Follow these steps for best results.</p>' +
+    '<div class="pd-steps">' +
+    p.howToUse.map(function(step, i) {
       return '<div class="pd-step"><div class="pd-step-num">' + (i + 1) + '</div><p class="pd-step-text">' + step + '</p></div>';
     }).join('') + '</div>';
-  document.getElementById('pd-how-to-use').innerHTML = howHTML;
+
+  /* ---- Accordion content: ROI ---- */
+  var costPerUnit = p.price;
+  var suggestedRetail = Math.round(costPerUnit * 3);
+  var profitPerUnit = suggestedRetail - costPerUnit;
+  var roi = Math.round((profitPerUnit / costPerUnit) * 100);
+  document.getElementById('pd-acc-roi').innerHTML =
+    '<p>By reselling or white-labelling this product, here is an estimate of the return on investment potential based on typical retail mark-ups in the South African cosmetics market.</p>' +
+    '<div class="roi-metrics">' +
+      '<div class="roi-metric-card"><span class="roi-metric-value">' + roi + '%</span><span class="roi-metric-label">Estimated ROI</span></div>' +
+      '<div class="roi-metric-card"><span class="roi-metric-value">R' + suggestedRetail + '</span><span class="roi-metric-label">Suggested Retail Price</span></div>' +
+      '<div class="roi-metric-card"><span class="roi-metric-value">R' + profitPerUnit + '</span><span class="roi-metric-label">Gross Profit / Unit</span></div>' +
+    '</div>' +
+    '<p style="font-size:12px;color:var(--text-muted);margin-top:8px;">* ROI estimates are indicative only. Actual returns depend on your pricing strategy, volume and operating costs. <a href="business-clients.html">Contact us</a> for a tailored quote.</p>';
+
+  /* ---- Accordion content: Shipping ---- */
+  document.getElementById('pd-acc-shipping').innerHTML =
+    '<p>We ship nationwide across South Africa with trusted courier partners. All orders are carefully packaged to arrive in perfect condition.</p>' +
+    '<div class="shipping-info-grid">' +
+      '<div class="shipping-info-item"><strong>Standard Delivery</strong>R65 flat rate · 3–5 business days</div>' +
+      '<div class="shipping-info-item"><strong>Free Shipping</strong>On all orders over R500</div>' +
+      '<div class="shipping-info-item"><strong>Order Processing</strong>Dispatched within 1–2 business days</div>' +
+      '<div class="shipping-info-item"><strong>Tracking</strong>Tracking number sent via email once dispatched</div>' +
+    '</div>' +
+    '<p style="margin-top:16px;">For bulk or B2B orders, please <a href="contact.html">contact us</a> directly for freight options and pricing.</p>';
 
   /* ---- Reviews ---- */
-  var reviewSets = {
-    default: [
-      { stars: '★★★★★', text: 'Absolutely love this product. My skin has never felt better — I\'ve been using it for 6 weeks and the results are incredible. Will never go back to anything else.', author: 'Naledi M.', location: 'Johannesburg · Verified buyer' },
-      { stars: '★★★★★', text: 'I was sceptical at first but this really works. Natural ingredients that actually deliver. My whole family uses it now.', author: 'Thandi K.', location: 'Cape Town · Verified buyer' },
-      { stars: '★★★★☆', text: 'Great product, smells amazing and absorbs beautifully. Shipping was fast too. Will definitely reorder.', author: 'Miriam van D.', location: 'Pretoria · Verified buyer' }
-    ]
-  };
-  var reviews = reviewSets[id] || reviewSets.default;
-  document.getElementById('pd-reviews').innerHTML = reviews.map(function (r) {
+  var reviews = [
+    { stars: '★★★★★', text: 'Absolutely love this product. My skin has never felt better — I\'ve been using it for 6 weeks and the results are incredible. Will never go back to anything else.', author: 'Naledi M.', location: 'Johannesburg · Verified buyer' },
+    { stars: '★★★★★', text: 'I was sceptical at first but this really works. Natural ingredients that actually deliver. My whole family uses it now.', author: 'Thandi K.', location: 'Cape Town · Verified buyer' },
+    { stars: '★★★★☆', text: 'Great product, smells amazing and absorbs beautifully. Shipping was fast too. Will definitely reorder.', author: 'Miriam van D.', location: 'Pretoria · Verified buyer' }
+  ];
+  document.getElementById('pd-reviews').innerHTML = reviews.map(function(r) {
     return '<div class="review-card"><div class="review-stars">' + r.stars + '</div><p class="review-text">"' + r.text + '"</p><p class="review-author">' + r.author + '</p><p class="review-location">' + r.location + '</p></div>';
   }).join('');
 
   /* ---- Related products ---- */
   var relatedEl = document.getElementById('pd-related');
   if (p.related && p.related.length) {
-    relatedEl.innerHTML = p.related.slice(0, 3).map(function (relId) {
+    relatedEl.innerHTML = p.related.slice(0, 3).map(function(relId) {
       var rel = BREAL_PRODUCTS[relId];
       if (!rel) return '';
       return '<div class="product-card" onclick="window.location=\'product.html?id=' + rel.id + '\'" style="cursor:pointer;">' +
@@ -304,6 +429,66 @@
         '</div></div></div>';
     }).join('');
   }
+
+  /* ---- Accordion JS ---- */
+  document.querySelectorAll('.pd-accord-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.pd-accord-item');
+      var isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.pd-accord-item.open').forEach(function(el) { el.classList.remove('open'); });
+      // Toggle clicked
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---- B2B toggle ---- */
+  var b2bBtn = document.getElementById('pd-b2b-toggle');
+  var b2bSection = document.getElementById('pd-b2b-section');
+  b2bBtn.addEventListener('click', function() {
+    var isVisible = b2bSection.style.display !== 'none';
+    b2bSection.style.display = isVisible ? 'none' : 'block';
+    b2bBtn.textContent = isVisible ? 'Ordering for your business? View B2B options →' : 'Hide B2B options ↑';
+  });
+
+  /* ---- MOQ logic ---- */
+  function updateMoqNotice() {
+    var pkgBtn = document.querySelector('.pd-b2b-toggle-btn[data-pkg].active');
+    var hasPkg = pkgBtn && pkgBtn.dataset.pkg === 'yes';
+    var notice = document.getElementById('moq-notice');
+    if (hasPkg) {
+      notice.className = 'moq-notice has-moq';
+      notice.innerHTML = '<span class="moq-icon">⚠️</span><span>A <strong>minimum order quantity of 20 units</strong> applies when packaging is selected, due to label printing requirements. Please ensure your order meets this minimum before proceeding.</span>';
+    } else {
+      notice.className = 'moq-notice no-moq';
+      notice.innerHTML = '<span class="moq-icon">✅</span><span>No minimum order quantity applies for white/private label <strong>without packaging</strong>. Order as many or as few units as you need.</span>';
+    }
+  }
+
+  document.querySelectorAll('.pd-b2b-toggle-btn[data-pkg]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.pd-b2b-toggle-btn[data-pkg]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      updateMoqNotice();
+    });
+  });
+
+  document.querySelectorAll('.pd-b2b-toggle-btn[data-type]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.pd-b2b-toggle-btn[data-type]').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  /* ---- Buy Now ---- */
+  document.getElementById('pd-buy-now').addEventListener('click', function() {
+    var name = this.dataset.name;
+    var price = parseInt(this.dataset.price, 10);
+    var qty = parseInt(document.getElementById('pd-qty-val').textContent, 10) || 1;
+    for (var i = 0; i < qty; i++) { addToCart(name, price); }
+    window.location.href = 'cart.html';
+  });
+
 })();
 </script>
 </body>

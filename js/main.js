@@ -118,7 +118,7 @@ function showCartFeedback(name) {
     'position:fixed',
     'bottom:24px',
     'right:24px',
-    'background:#2d4438',
+    'background:#3a5a4a',
     'color:#fff',
     'padding:12px 22px',
     'border-radius:6px',
@@ -508,6 +508,105 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/* ---- EFT / Yoco payment method toggle ---- */
+document.addEventListener('DOMContentLoaded', function () {
+  var payYoco = document.getElementById('pay-yoco');
+  var payEft  = document.getElementById('pay-eft');
+  var eftBox  = document.getElementById('eft-details');
+  var btnText = document.getElementById('checkout-btn-text');
+
+  if (!payYoco || !payEft) return;
+
+  function setMethod(method) {
+    payYoco.classList.toggle('active', method === 'yoco');
+    payEft.classList.toggle('active',  method === 'eft');
+    if (eftBox) eftBox.style.display = method === 'eft' ? 'block' : 'none';
+    if (btnText) btnText.textContent  = method === 'eft' ? 'Place Order (EFT)' : 'Checkout with Yoco';
+  }
+
+  payYoco.addEventListener('click', function () { setMethod('yoco'); });
+  payEft.addEventListener('click',  function () { setMethod('eft');  });
+});
+
+/* ---- Email Popup ---- */
+(function () {
+  var POPUP_KEY    = 'breal-popup-dismissed';
+  var POPUP_DELAY  = 5000; // 5 seconds
+
+  // Don't show on cart or checkout
+  if (window.location.pathname.includes('cart')) return;
+  // Don't show if already dismissed in this session
+  if (sessionStorage.getItem(POPUP_KEY)) return;
+
+  function buildPopup() {
+    var overlay = document.createElement('div');
+    overlay.className = 'email-popup-overlay';
+    overlay.id = 'email-popup-overlay';
+    overlay.innerHTML =
+      '<div class="email-popup-card">' +
+        '<button class="email-popup-close" id="popup-close" aria-label="Close">✕</button>' +
+        '<div class="email-popup-icon">🌿</div>' +
+        '<h3>Join the B-Real Community</h3>' +
+        '<p>Subscribe for exclusive skincare tips, early access to new products and special offers — only for our subscribers.</p>' +
+        '<div class="email-popup-form" id="popup-form-wrap">' +
+          '<input type="email" id="popup-email" placeholder="Your email address" autocomplete="email">' +
+          '<button class="btn btn-tan" id="popup-submit">Subscribe</button>' +
+        '</div>' +
+        '<div class="email-popup-success" id="popup-success">' +
+          '<div class="email-popup-icon">🎉</div>' +
+          '<h3>You\'re in!</h3>' +
+          '<p>Thank you for subscribing. Watch your inbox for something special.</p>' +
+        '</div>' +
+        '<button class="email-popup-skip" id="popup-skip">No thanks</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    function dismiss() {
+      overlay.classList.remove('visible');
+      sessionStorage.setItem(POPUP_KEY, '1');
+    }
+
+    document.getElementById('popup-close').addEventListener('click', dismiss);
+    document.getElementById('popup-skip').addEventListener('click', dismiss);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) dismiss();
+    });
+
+    document.getElementById('popup-submit').addEventListener('click', function () {
+      var email = document.getElementById('popup-email').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('popup-email').style.borderColor = '#c0392b';
+        return;
+      }
+      // Show success state
+      document.getElementById('popup-form-wrap').style.display = 'none';
+      document.getElementById('popup-skip').style.display = 'none';
+      document.getElementById('popup-success').style.display = 'block';
+      sessionStorage.setItem(POPUP_KEY, '1');
+      setTimeout(dismiss, 3000);
+    });
+
+    // Show with delay
+    setTimeout(function () {
+      overlay.classList.add('visible');
+    }, POPUP_DELAY);
+
+    // Exit intent (desktop)
+    document.addEventListener('mouseleave', function handler(e) {
+      if (e.clientY <= 0 && !sessionStorage.getItem(POPUP_KEY)) {
+        overlay.classList.add('visible');
+        document.removeEventListener('mouseleave', handler);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildPopup);
+  } else {
+    buildPopup();
+  }
+})();
+
 /* ============================================
    CART PAGE
    ============================================ */
@@ -692,6 +791,12 @@ function handleCheckout() {
     alert('Your cart is empty.');
     return;
   }
-  // TODO: Replace with your real Yoco payment link
-  alert('Redirecting to Yoco checkout…\n\nIntegrate your Yoco payment link here to complete the integration.');
+  var eftBtn = document.getElementById('pay-eft');
+  var isEft  = eftBtn && eftBtn.classList.contains('active');
+  if (isEft) {
+    alert('Thank you for your order!\n\nPlease make your EFT payment using the banking details shown and email your Proof of Payment to hello@brealbeauty.co.za.\n\nYour order will be processed once payment is confirmed.');
+  } else {
+    // TODO: Replace with your real Yoco payment link
+    alert('Redirecting to Yoco checkout…\n\nIntegrate your Yoco payment link here to complete the integration.');
+  }
 }

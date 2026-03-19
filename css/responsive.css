@@ -157,6 +157,12 @@ html, body {
   .steps-row { grid-template-columns: 1fr; }
   .steps-row::before { display: none; }
 
+  /* ----- Why Partner grid (B2B page) ----- */
+  .why-partner-grid { grid-template-columns: 1fr; }
+
+  /* ----- Custom steps grid (B2B page) ----- */
+  .custom-steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
   /* ----- Section padding ----- */
   .section { padding: 48px 0; }
 
@@ -169,14 +175,21 @@ html, body {
   .order-summary { position: static; }
   .cart-items-header { grid-template-columns: 1fr 100px 80px; font-size: 10px; }
   .cart-item { grid-template-columns: 1fr 100px 80px; }
+  .payment-options { flex-direction: column; gap: 8px; }
 
   /* ----- Product detail ----- */
   .pd-layout { grid-template-columns: 1fr; gap: 36px; }
-  .pd-tabs-section .pd-tab-nav { overflow-x: auto; scrollbar-width: none; }
-  .pd-tabs-section .pd-tab-nav::-webkit-scrollbar { display: none; }
-  .pd-tab-btn { padding: 14px 20px; font-size: 13px; }
+  .pd-action-row { flex-direction: column; }
+  .pd-action-row .btn { width: 100%; }
+  .roi-metrics { grid-template-columns: repeat(2, 1fr); }
+  .shipping-info-grid { grid-template-columns: 1fr; }
   .pd-ingredients-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* ----- Email popup ----- */
+  .email-popup-card { padding: 40px 24px 28px; }
+  .email-popup-form { flex-direction: column; }
+  .email-popup-form input { min-width: 0; }
 }
 
 /* ============================================
@@ -216,6 +229,10 @@ html, body {
   .mission-cards { grid-template-columns: 1fr; }
   .commitments-grid { grid-template-columns: repeat(2, 1fr); }
 
+  /* B2B page */
+  .why-partner-grid { grid-template-columns: 1fr; }
+  .custom-steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
   /* Product detail */
   .pd-ingredients-grid { grid-template-columns: 1fr; }
   .pd-qty-row { flex-wrap: wrap; }
@@ -230,4 +247,11 @@ html, body {
   .cart-item-info { grid-column: 1 / -1; }
   .cart-item-qty { justify-self: start; }
   .cart-item-total { justify-self: end; align-self: center; font-size: 14px; }
+
+  /* Product page */
+  .roi-metrics { grid-template-columns: 1fr; }
+  .pd-b2b-row { flex-direction: column; align-items: flex-start; }
+
+  /* Email popup */
+  .email-popup-card { padding: 32px 18px 24px; }
 }
