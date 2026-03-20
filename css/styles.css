@@ -738,8 +738,8 @@ h4 { font-size: 1.05rem; }
    FOOTER
    ============================================ */
 .site-footer {
-  background: var(--sage);
-  color: rgba(255,255,255,0.85);
+  background: #e8f0e8;
+  color: var(--dark);
   padding: 64px 0 28px;
 }
 .footer-grid {
@@ -748,19 +748,19 @@ h4 { font-size: 1.05rem; }
   gap: 32px;
   margin-bottom: 48px;
 }
-.footer-brand .logo-name { color: var(--white); }
-.footer-brand .logo-tagline { color: rgba(255,255,255,0.4); }
+.footer-brand .logo-name { color: var(--sage-dark); }
+.footer-brand .logo-tagline { color: var(--text-muted); }
 .footer-brand p {
   margin-top: 16px;
   font-size: 14px;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   line-height: 1.65;
 }
 .footer-col-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--sage-dark);
   margin-bottom: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -768,31 +768,31 @@ h4 { font-size: 1.05rem; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
 .footer-links a {
   font-size: 14px;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   transition: color var(--transition);
 }
-.footer-links a:hover { color: var(--white); }
+.footer-links a:hover { color: var(--sage-dark); }
 .footer-bottom {
   padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   flex-wrap: wrap;
   gap: 12px;
 }
 .social-links { display: flex; gap: 20px; }
 .social-links a {
-  color: rgba(255,255,255,0.6);
+  color: var(--text-muted);
   transition: color var(--transition);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-.social-links a:hover { color: var(--white); }
+.social-links a:hover { color: var(--sage-dark); }
 
 /* ============================================
    PAGE HERO (inner pages)
@@ -1119,6 +1119,15 @@ h4 { font-size: 1.05rem; }
 /* ============================================
    BUILD A GIFT
    ============================================ */
+/* Founder layout — about.html */
+.founder-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.founder-photo { flex-shrink: 0; }
+
 .gift-page-hero { background: var(--sage-pale); }
 .gift-builder-layout {
   display: grid;

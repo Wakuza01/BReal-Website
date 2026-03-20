@@ -154,6 +154,9 @@ body {
   .about-story-section .container { grid-template-columns: 1fr; gap: 40px; }
   .mission-cards { grid-template-columns: 1fr 1fr; }
   .ingredients-grid { grid-template-columns: repeat(2, 1fr); }
+  .founder-layout { grid-template-columns: 1fr; gap: 32px; }
+  .founder-photo { max-width: 280px; }
+  .shipping-options-grid { grid-template-columns: 1fr; }
 
   /* ----- Shop page ----- */
   .shop-layout { grid-template-columns: 1fr; }
