@@ -55,8 +55,14 @@
 <!-- ===== SHOP HEADER ===== -->
 <section class="shop-header">
   <div class="container">
-    <span class="section-label">Our Products</span>
-    <h1>Shop All Products</h1>
+    <nav class="shop-cat-crumb" id="shop-cat-crumb" aria-label="Category breadcrumb">
+      <a href="shop.html">All Products</a>
+      <span class="shop-crumb-sep">›</span>
+      <span id="shop-crumb-cat"></span>
+    </nav>
+    <span class="section-label" id="shop-section-label">Our Products</span>
+    <h1 id="shop-h1">Shop All Products</h1>
+    <p id="shop-cat-desc" class="shop-cat-desc-text"></p>
     <div class="shop-filter-pills">
       <button class="pill active" data-filter="all">All Products</button>
       <button class="pill" data-filter="skincare">Skincare</button>
@@ -72,10 +78,10 @@
 <div class="container" style="padding-top:40px;">
   <div class="gift-banner">
     <div class="gift-banner-text">
-      <h3>Build a Personalised Gift</h3>
-      <p>Select products, packaging and add-ons to create the perfect gift for someone special.</p>
+      <h3>Create Your Brand</h3>
+      <p>Choose your products, label style and customisation options — we'll handle the rest. Perfect for white label and private label clients.</p>
     </div>
-    <a href="build-a-gift.html" class="btn btn-outline-cream btn-lg">Build Your Brand →</a>
+    <a href="business-clients.html#configurator" class="btn btn-outline-cream btn-lg">Start Building →</a>
   </div>
 </div>
 
@@ -452,7 +458,7 @@
           <li><a href="shop.html?cat=haircare">Haircare</a></li>
           <li><a href="shop.html?cat=soaps">Soaps & Bars</a></li>
           <li><a href="shop.html?cat=lip-care">Lip Care</a></li>
-          <li><a href="build-a-gift.html">Build Your Brand</a></li>
+          <li><a href="business-clients.html">Create Your Brand</a></li>
         </ul>
       </div>
       <div>
@@ -460,7 +466,7 @@
         <ul class="footer-links">
           <li><a href="business-clients.html#white-label">White Label</a></li>
           <li><a href="business-clients.html#private-label">Private Label</a></li>
-          <li><a href="business-clients.html#custom">Custom Products</a></li>
+          <li><a href="corporate-gifting.html">Corporate Gifting</a></li>
         </ul>
       </div>
       <div>
@@ -487,5 +493,60 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var CAT_DATA = {
+    skincare: {
+      label: 'Skincare',
+      heading: 'Skincare Range',
+      desc: 'Premium plant-based serums, facial oils and hydration gels — each available for white label or private label branding. Start your skincare line with our proven, results-driven formulations.'
+    },
+    haircare: {
+      label: 'Haircare',
+      heading: 'Haircare Range',
+      desc: 'Professional-grade scalp treatments, repair shampoos and deep conditioners — ready to carry your brand. Trusted formulations for salons, retailers and beauty entrepreneurs across South Africa.'
+    },
+    soaps: {
+      label: 'Soaps & Bars',
+      heading: 'Soaps & Bars',
+      desc: 'Handcrafted cold-process facial bars and body soaps — white label-ready for boutique beauty brands, spas and curated gift collections. Each bar is made to order in small batches.'
+    },
+    body: {
+      label: 'Body Care',
+      heading: 'Body Care',
+      desc: 'Targeted body treatments with intensive plant-based formulations — available for B2B reselling and white label branding. No minimum order quantity without packaging.'
+    },
+    'lip-care': {
+      label: 'Lip Care',
+      heading: 'Lip Care',
+      desc: 'Natural beeswax-based lip treatments — perfect for retail collections, gift sets and white label beauty ranges. A customer favourite and a low-cost high-margin addition to any product line.'
+    }
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var cat = params.get('cat');
+  if (cat && CAT_DATA[cat]) {
+    var d = CAT_DATA[cat];
+    document.getElementById('shop-section-label').textContent = d.label;
+    document.getElementById('shop-h1').textContent = d.heading;
+    var descEl = document.getElementById('shop-cat-desc');
+    descEl.textContent = d.desc;
+    descEl.style.display = 'block';
+    var crumb = document.getElementById('shop-cat-crumb');
+    crumb.classList.add('active');
+    document.getElementById('shop-crumb-cat').textContent = d.label;
+    /* Activate the matching filter pill */
+    document.querySelectorAll('.pill').forEach(function (p) {
+      p.classList.remove('active');
+      if (p.dataset.filter === cat) p.classList.add('active');
+    });
+    /* Trigger filtering after main.js initialises */
+    setTimeout(function () {
+      var pill = document.querySelector('.pill[data-filter="' + cat + '"]');
+      if (pill) pill.click();
+    }, 30);
+  }
+})();
+</script>
 </body>
 </html>

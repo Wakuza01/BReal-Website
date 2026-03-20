@@ -56,406 +56,249 @@
 <section class="page-hero">
   <div class="container">
     <div class="page-hero-dots">
-      <span>White Label</span> · <span>Private Label</span> · <span>Custom Formulations</span>
+      <span>Configure</span> · <span>Estimate</span> · <span>Order</span>
     </div>
     <h1>Start Your Own Brand<br>with B-Real Natural Beauty</h1>
     <p>Choose from ready-made natural products to rebrand, or let us formulate something completely unique to your vision.</p>
   </div>
 </section>
 
-<!-- ===== TABS ===== -->
-<section class="tabs-wrapper">
+
+<!-- ===== INTERACTIVE CONFIGURATOR ===== -->
+<section class="cyb-config-section" id="configurator">
   <div class="container">
-    <div class="tab-nav" role="tablist">
-      <button class="tab-btn active" data-tab="white-label" role="tab" id="tab-white-label">White Label</button>
-      <button class="tab-btn" data-tab="private-label" role="tab" id="tab-private-label">Private Label</button>
-      <button class="tab-btn" data-tab="custom" role="tab" id="tab-custom">Custom Products</button>
+    <div class="section-header">
+      <span class="section-label">Order Builder</span>
+      <h2>Configure Your Order</h2>
+      <p style="margin-top:12px;color:var(--text-muted);max-width:520px;margin-left:auto;margin-right:auto;">Select your product, size, packaging and quantity for an instant estimate — or submit a quote request.</p>
     </div>
-
-    <!-- ===== WHITE LABEL TAB ===== -->
-    <div class="tab-panel active" id="white-label" role="tabpanel">
-      <div class="section-header text-center" style="margin-bottom:36px;">
-        <h2>White Label</h2>
-        <p>Choose from our ready-made natural products and rebrand them as your own. Perfect for startups or those testing the market.</p>
+    <div class="config-wrap">
+      <div class="config-progress" id="config-progress">
+        <div class="config-progress-step active" data-step="1"><span class="config-prog-num">1</span><span class="config-prog-label">Product</span></div>
+        <div class="config-progress-line"></div>
+        <div class="config-progress-step" data-step="2"><span class="config-prog-num">2</span><span class="config-prog-label">Size</span></div>
+        <div class="config-progress-line"></div>
+        <div class="config-progress-step" data-step="3"><span class="config-prog-num">3</span><span class="config-prog-label">Packaging</span></div>
+        <div class="config-progress-line"></div>
+        <div class="config-progress-step" data-step="4"><span class="config-prog-num">4</span><span class="config-prog-label">Labels</span></div>
+        <div class="config-progress-line"></div>
+        <div class="config-progress-step" data-step="5"><span class="config-prog-num">5</span><span class="config-prog-label">Quantity</span></div>
+        <div class="config-progress-line"></div>
+        <div class="config-progress-step" data-step="6"><span class="config-prog-num">6</span><span class="config-prog-label">Summary</span></div>
       </div>
-
-      <div class="range-grid reveal-children">
-
-        <!-- B-Real Range -->
-        <div class="range-card">
-          <h3>B-Real Natural Range</h3>
-          <p>Choose from our ready-made natural products and rebrand them as your own.</p>
-          <span class="moq-badge">MOQ: 20 units</span>
-
-          <div class="product-checklist">
-            <label class="check-item">
-              <input type="checkbox" id="scalp-oils">
-              <span>Scalp Oils</span>
-              <span class="item-size">30ml / 50ml / 100ml</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="serums">
-              <span>Serums</span>
-              <span class="item-size">30ml / 50ml</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="soaps">
-              <span>Soaps & Facial Bars</span>
-              <span class="item-size">80g / 100g</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="lip-balms">
-              <span>Lip Balms</span>
-              <span class="item-size">15ml</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="aloe-gel">
-              <span>Aloe Ferox Gel</span>
-              <span class="item-size">50ml / 100ml</span>
-            </label>
+      <div class="config-body">
+        <div class="config-steps-panel">
+          <div class="config-step active" id="config-step-1">
+            <h3 class="config-step-title">Select a Product</h3>
+            <p class="config-step-sub">Choose one product to configure. Repeat for additional products.</p>
+            <div class="config-product-grid" id="config-product-grid"></div>
+          </div>
+          <div class="config-step" id="config-step-2">
+            <h3 class="config-step-title">Select a Size</h3>
+            <p class="config-step-sub">Choose the packaging size. Bulk sizes are quoted separately.</p>
+            <div class="config-options-row">
+              <button class="config-opt-btn" data-size="sample">
+                <span class="config-opt-title">Sample</span>
+                <span class="config-opt-sub">Small retail unit</span>
+                <span class="config-opt-price" id="price-sample">—</span>
+              </button>
+              <button class="config-opt-btn" data-size="retail">
+                <span class="config-opt-title">Retail Ready</span>
+                <span class="config-opt-sub">Standard unit size</span>
+                <span class="config-opt-price" id="price-retail">—</span>
+              </button>
+              <button class="config-opt-btn" data-size="1l">
+                <span class="config-opt-title">1L Bulk</span>
+                <span class="config-opt-sub">Wholesale volume</span>
+                <span class="config-opt-price">Price on request</span>
+              </button>
+              <button class="config-opt-btn" data-size="5l">
+                <span class="config-opt-title">5L Bulk</span>
+                <span class="config-opt-sub">Large wholesale</span>
+                <span class="config-opt-price">Price on request</span>
+              </button>
+            </div>
+          </div>
+          <div class="config-step" id="config-step-3">
+            <h3 class="config-step-title">Packaging</h3>
+            <p class="config-step-sub">How do you want the product packaged?</p>
+            <div class="config-options-row">
+              <button class="config-opt-btn" data-pkg="branded">
+                <span class="config-opt-title">Branded Packaging</span>
+                <span class="config-opt-sub">Your label on our standard containers</span>
+                <span class="config-opt-price">+R15/unit</span>
+              </button>
+              <button class="config-opt-btn" data-pkg="plain">
+                <span class="config-opt-title">Plain Packaging</span>
+                <span class="config-opt-sub">Unlabelled — apply your own labels</span>
+                <span class="config-opt-price">Included</span>
+              </button>
+              <button class="config-opt-btn" data-pkg="none">
+                <span class="config-opt-title">No Packaging</span>
+                <span class="config-opt-sub">Bulk / unpackaged product</span>
+                <span class="config-opt-price">Included</span>
+              </button>
+            </div>
+          </div>
+          <div class="config-step" id="config-step-4">
+            <h3 class="config-step-title">Labels</h3>
+            <p class="config-step-sub">Do you need labels printed for your products?</p>
+            <div class="config-options-row">
+              <button class="config-opt-btn" data-labels="yes">
+                <span class="config-opt-title">Yes, I need labels</span>
+                <span class="config-opt-sub">Shelf-ready with your branding printed</span>
+                <span class="config-opt-price">Label cost included</span>
+              </button>
+              <button class="config-opt-btn" data-labels="no">
+                <span class="config-opt-title">No labels needed</span>
+                <span class="config-opt-sub">I'll apply my own or sell unlabelled</span>
+                <span class="config-opt-price">Included</span>
+              </button>
+            </div>
+            <div class="config-label-opts" id="config-label-opts" style="display:none;">
+              <p class="config-step-sub" style="margin-top:20px;margin-bottom:12px;">How will you provide your label artwork?</p>
+              <div class="config-options-row">
+                <button class="config-opt-btn" data-labelart="upload">
+                  <span class="config-opt-title">Upload my artwork</span>
+                  <span class="config-opt-sub">Print-ready file (PDF/AI)</span>
+                  <span class="config-opt-price">No extra cost</span>
+                </button>
+                <button class="config-opt-btn" data-labelart="design">
+                  <span class="config-opt-title">Design it for me</span>
+                  <span class="config-opt-sub">Enquire about our design service</span>
+                  <span class="config-opt-price">POA</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="config-step" id="config-step-5">
+            <h3 class="config-step-title">Quantity</h3>
+            <p class="config-step-sub" id="qty-sub">How many units do you need?</p>
+            <div class="config-qty-wrap">
+              <div class="config-qty-row">
+                <button class="config-qty-btn" id="qty-minus">&#8722;</button>
+                <input class="config-qty-input" type="number" id="qty-val" value="20" min="1" max="10000">
+                <button class="config-qty-btn" id="qty-plus">+</button>
+              </div>
+            </div>
+            <div class="config-moq-notice" id="config-moq-notice" style="display:none;"></div>
+          </div>
+          <div class="config-step" id="config-step-6">
+            <h3 class="config-step-title">Order Summary</h3>
+            <div class="config-summary-detail" id="config-summary-detail"></div>
+            <div class="config-brief-wrap">
+              <label class="config-label-text" for="config-brief">Tell us about your brand (optional)</label>
+              <textarea id="config-brief" class="config-brief-input" placeholder="e.g. Launching a natural skincare range for women 25&#8211;45. Prefer a clean, minimal label with our logo. Planning to reorder monthly..."></textarea>
+            </div>
+            <div class="config-final-actions" id="config-final-actions"></div>
+          </div>
+          <div class="config-nav">
+            <button class="btn btn-outline-dark" id="config-prev" style="display:none;">&#8592; Previous</button>
+            <button class="btn btn-primary" id="config-next">Next &#8594;</button>
           </div>
         </div>
-
-        <!-- Salon Professional Range -->
-        <div class="range-card">
-          <h3>Salon Professional Range</h3>
-          <p>Professional salon-grade products for salons, stylists and beauty professionals. Not part of the B-Real natural range — these are formulated specifically for professional use.</p>
-          <span class="moq-badge">MOQ: 20 units</span>
-
-          <div class="product-checklist">
-            <label class="check-item">
-              <input type="checkbox" id="shampoos">
-              <span>Shampoos</span>
-              <span class="item-size">250ml / 500ml</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="conditioners">
-              <span>Conditioners</span>
-              <span class="item-size">250ml / 500ml</span>
-            </label>
-            <label class="check-item">
-              <input type="checkbox" id="treatments">
-              <span>Treatments</span>
-              <span class="item-size">150ml / 250ml</span>
-            </label>
+        <div class="config-sidebar">
+          <h4 class="config-sidebar-title">Your Selection</h4>
+          <div id="config-sidebar-content" class="config-sidebar-empty">Select a product to begin.</div>
+          <div class="config-sidebar-total" id="config-sidebar-total" style="display:none;">
+            <div class="config-total-row"><span>Unit price</span><span id="sb-unit-price">—</span></div>
+            <div class="config-total-row" id="sb-setup-row" style="display:none;"><span>Label setup (once-off)</span><span>R200</span></div>
+            <div class="config-total-row config-total-final"><span>Estimated total</span><span id="sb-total">—</span></div>
+            <p class="config-sidebar-note">Estimates only. Final pricing confirmed on your quote.</p>
           </div>
-        </div>
-
-      </div>
-
-      <!-- White Label Form -->
-      <div class="form-card reveal" id="white-label-form">
-        <h3>Request White Label Quote</h3>
-        <p>Fill in your details below and we'll get back to you within 48 hours.</p>
-
-        <form onsubmit="handleFormSubmit(event, 'wl-success')">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="wl-name">Your Name</label>
-              <input type="text" id="wl-name" placeholder="Full name" required>
-            </div>
-            <div class="form-group">
-              <label for="wl-business">Business Name</label>
-              <input type="text" id="wl-business" placeholder="Company / Brand name" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="wl-email">Email Address</label>
-              <input type="email" id="wl-email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="wl-phone">Phone / WhatsApp</label>
-              <input type="tel" id="wl-phone" placeholder="073 348 9717">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="wl-qty">Quantity Required</label>
-              <select id="wl-qty">
-                <option value="">Select quantity</option>
-                <option value="20-50">20 – 50 units</option>
-                <option value="50-100">50 – 100 units</option>
-                <option value="100-500">100 – 500 units</option>
-                <option value="500+">500+ units</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="wl-packaging">Packaging Style</label>
-              <select id="wl-packaging">
-                <option value="">Select preference</option>
-                <option value="minimal">Minimal / Clean label</option>
-                <option value="luxe">Luxe / Premium feel</option>
-                <option value="eco">Eco-friendly / Kraft</option>
-                <option value="custom">Custom design</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="wl-logo">Upload Your Logo (optional)</label>
-            <button type="button" class="upload-btn" onclick="document.getElementById('wl-logo-file').click()">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Upload Logo
-            </button>
-            <input type="file" id="wl-logo-file" accept="image/*,.pdf,.ai,.eps" style="display:none">
-            <p class="form-note">Accepted: PNG, JPG, PDF, AI, EPS</p>
-          </div>
-          <div class="form-group">
-            <label for="wl-notes">Additional Notes</label>
-            <textarea id="wl-notes" placeholder="Tell us more about your brand, specific products of interest, or any questions..."></textarea>
-          </div>
-          <div class="form-submit-row">
-            <button type="submit" class="btn btn-primary btn-lg">Request a Quote</button>
-            <p style="font-size:13px;color:var(--text-muted);">We respond within 48 hours</p>
-          </div>
-        </form>
-        <div class="form-success" id="wl-success">
-          ✓ Thank you! We've received your enquiry and will be in touch within 48 hours.
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ===== PRIVATE LABEL TAB ===== -->
-    <div class="tab-panel" id="private-label" role="tabpanel">
-      <div class="section-header text-center" style="margin-bottom:36px;">
-        <h2>Private Label</h2>
-        <p>Create your own unique formula. We design, package and label products exclusively for your business. Once created, it is YOURS only.</p>
-      </div>
-
-      <!-- What we offer -->
-      <div class="range-grid reveal-children" style="margin-bottom:40px;">
-        <div class="range-card">
-          <h3>What's Included</h3>
-          <p>Our private label service is fully end-to-end. You come with an idea; we deliver a finished, branded product.</p>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px;">
-            <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <span style="color:var(--sage);font-weight:700;font-size:16px;">✓</span>
-              Custom formula development
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <span style="color:var(--sage);font-weight:700;font-size:16px;">✓</span>
-              Packaging design & sourcing
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <span style="color:var(--sage);font-weight:700;font-size:16px;">✓</span>
-              Label design & printing
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <span style="color:var(--sage);font-weight:700;font-size:16px;">✓</span>
-              Exclusive formula — yours only
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;">
-              <span style="color:var(--sage);font-weight:700;font-size:16px;">✓</span>
-              Quality testing & certification
-            </li>
-          </ul>
+<!-- ===== STARTER PACKAGES ===== -->
+<section class="section cyb-packages-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Ready-Made Solutions</span>
+      <h2>Starter Packages</h2>
+      <p style="margin-top:12px;color:var(--text-muted);max-width:540px;margin-left:auto;margin-right:auto;">Not sure where to start? These packages make it easy to launch your brand without the guesswork.</p>
+    </div>
+    <div class="cyb-packages-grid">
+      <div class="cyb-pkg-card">
+        <div class="cyb-pkg-header">
+          <p class="cyb-pkg-name">Starter</p>
+          <p class="cyb-pkg-price">From <strong>R1,500</strong></p>
+          <p class="cyb-pkg-sub">Perfect for launching</p>
         </div>
-        <div class="range-card">
-          <h3>Product Types Available</h3>
-          <p>We can create a wide range of natural beauty products tailored to your target market.</p>
-          <div class="product-checklist" style="margin-top:16px;">
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Facial Serums & Oils</span></div>
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Shampoos & Conditioners</span></div>
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Body Lotions & Butters</span></div>
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Soaps & Cleansers</span></div>
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Hair Masks & Treatments</span></div>
-            <div class="check-item"><span style="width:18px;height:18px;background:var(--sage-pale);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:12px;">✦</span><span>Scrubs & Exfoliants</span></div>
-          </div>
+        <ul class="cyb-pkg-features">
+          <li>20 units of 1&#8211;3 products</li>
+          <li>Standard label printing</li>
+          <li>Your logo &amp; colour scheme</li>
+          <li>3&#8211;7 business days production</li>
+          <li>Nationwide delivery included</li>
+        </ul>
+        <a href="#configurator" class="btn btn-outline btn-full">Configure Now</a>
+      </div>
+      <div class="cyb-pkg-card cyb-pkg-featured">
+        <div class="cyb-pkg-header">
+          <p class="cyb-pkg-name">Growth</p>
+          <p class="cyb-pkg-price">From <strong>R4,500</strong></p>
+          <p class="cyb-pkg-sub">Scale your range</p>
+        </div>
+        <ul class="cyb-pkg-features">
+          <li>50 units of 3&#8211;6 products</li>
+          <li>Custom label design included</li>
+          <li>Preferential unit pricing</li>
+          <li>2&#8211;4 weeks production</li>
+          <li>Priority support</li>
+          <li>Nationwide delivery included</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary btn-full">Get a Quote</a>
+      </div>
+      <div class="cyb-pkg-card">
+        <div class="cyb-pkg-header">
+          <p class="cyb-pkg-name">Premium</p>
+          <p class="cyb-pkg-price"><strong>Custom Pricing</strong></p>
+          <p class="cyb-pkg-sub">Build a full range</p>
+        </div>
+        <ul class="cyb-pkg-features">
+          <li>100+ units, full product range</li>
+          <li>Dedicated account manager</li>
+          <li>Custom formulation available</li>
+          <li>Bespoke packaging options</li>
+          <li>Bulk pricing &amp; reorder benefits</li>
+          <li>Fastest turnaround priority</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline btn-full">Enquire Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MOQ & LEAD TIMES ===== -->
+<section class="section cyb-moq-section">
+  <div class="container">
+    <div class="cyb-moq-grid">
+      <div class="cyb-moq-block">
+        <span class="section-label">Order Minimums</span>
+        <h2 style="margin-top:8px;">Minimum Order Quantities</h2>
+        <div class="cyb-moq-table">
+          <div class="cyb-moq-row"><span>Standard range (no labels)</span><span class="cyb-moq-val">No minimum</span></div>
+          <div class="cyb-moq-row"><span>White label (shelf-ready, first order)</span><span class="cyb-moq-val">20 units/variant</span></div>
+          <div class="cyb-moq-row"><span>First order under 20 units (labelled)</span><span class="cyb-moq-val">+R200 setup fee</span></div>
+          <div class="cyb-moq-row"><span>Reorders after label setup</span><span class="cyb-moq-val">Any quantity</span></div>
+          <div class="cyb-moq-row"><span>Private label / custom formulation</span><span class="cyb-moq-val">20 units min.</span></div>
         </div>
       </div>
-
-      <!-- Private Label Form -->
-      <div class="form-card">
-        <h3>Request Private Label Quote</h3>
-        <p>Tell us about your vision and we'll be in touch to discuss how we can make it a reality.</p>
-
-        <form onsubmit="handleFormSubmit(event, 'pl-success')">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="pl-name">Your Name</label>
-              <input type="text" id="pl-name" placeholder="Full name" required>
-            </div>
-            <div class="form-group">
-              <label for="pl-business">Brand / Business Name</label>
-              <input type="text" id="pl-business" placeholder="Your brand name" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="pl-email">Email Address</label>
-              <input type="email" id="pl-email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="pl-phone">Phone / WhatsApp</label>
-              <input type="tel" id="pl-phone" placeholder="073 348 9717">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="pl-product-type">Product Type</label>
-              <select id="pl-product-type" required>
-                <option value="">Select product type</option>
-                <option value="facial-serum">Facial Serum / Oil</option>
-                <option value="shampoo">Shampoo / Conditioner</option>
-                <option value="body-lotion">Body Lotion / Butter</option>
-                <option value="soap">Soap / Cleanser</option>
-                <option value="hair-treatment">Hair Mask / Treatment</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="pl-qty">Estimated Quantity</label>
-              <input type="number" id="pl-qty" placeholder="e.g. 100" min="20" value="20">
-              <p class="form-note">Minimum order: 20 units</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="pl-benefits">Desired Benefits / Key Ingredients</label>
-            <textarea id="pl-benefits" placeholder="e.g. moisturising, anti-ageing, strengthening, specific ingredients like argan oil, vitamin C..." required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="pl-packaging">Packaging Preference</label>
-            <select id="pl-packaging">
-              <option value="">Select packaging style</option>
-              <option value="glass-dropper">Glass dropper bottle</option>
-              <option value="pump-bottle">Pump bottle</option>
-              <option value="roll-on">Roll-on applicator</option>
-              <option value="jar">Jar / tub</option>
-              <option value="tube">Squeeze tube</option>
-              <option value="open">Open to suggestions</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="pl-target">Target Market / Customer</label>
-            <textarea id="pl-target" placeholder="Who are your customers? e.g. women 25-45, natural beauty enthusiasts, salon clients..."></textarea>
-          </div>
-          <div class="form-submit-row">
-            <button type="submit" class="btn btn-primary btn-lg">Request a Quote</button>
-          </div>
-        </form>
-        <div class="form-success" id="pl-success">
-          ✓ Thank you! We've received your private label enquiry and will contact you within 48 hours to discuss your brand vision.
+      <div class="cyb-moq-block">
+        <span class="section-label">Production Timelines</span>
+        <h2 style="margin-top:8px;">Lead Times</h2>
+        <div class="cyb-moq-table">
+          <div class="cyb-moq-row"><span>Standard range (unlabelled)</span><span class="cyb-moq-val">3&#8211;7 days</span></div>
+          <div class="cyb-moq-row"><span>Larger orders</span><span class="cyb-moq-val">Up to 10 days</span></div>
+          <div class="cyb-moq-row"><span>White label (labelled)</span><span class="cyb-moq-val">2&#8211;4 weeks</span></div>
+          <div class="cyb-moq-row"><span>Private label</span><span class="cyb-moq-val">4&#8211;8 weeks</span></div>
+          <div class="cyb-moq-row"><span>Custom formulations</span><span class="cyb-moq-val">6&#8211;12 weeks</span></div>
         </div>
       </div>
     </div>
-
-    <!-- ===== CUSTOM PRODUCTS TAB ===== -->
-    <div class="tab-panel" id="custom" role="tabpanel">
-      <div class="section-header text-center" style="margin-bottom:36px;">
-        <h2>Custom Products</h2>
-        <p>For individuals with specific skin or hair needs. We design tailor-made formulas just for you — personalised to your unique biology and lifestyle.</p>
-      </div>
-
-      <!-- How it works -->
-      <div style="background:var(--cream-mid);border-radius:var(--radius-lg);padding:36px;margin-bottom:40px;">
-        <h3 style="text-align:center;margin-bottom:32px;">How Custom Formulation Works</h3>
-        <div class="custom-steps-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
-          <div style="text-align:center;">
-            <div style="width:52px;height:52px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;">1</div>
-            <h4 style="font-size:0.95rem;margin-bottom:6px;">Tell Us About You</h4>
-            <p style="font-size:13px;color:var(--text-muted);">Complete the form below with your skin/hair details.</p>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:52px;height:52px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;">2</div>
-            <h4 style="font-size:0.95rem;margin-bottom:6px;">Consultation</h4>
-            <p style="font-size:13px;color:var(--text-muted);">We review your profile and schedule a consultation call.</p>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:52px;height:52px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;">3</div>
-            <h4 style="font-size:0.95rem;margin-bottom:6px;">Formulation</h4>
-            <p style="font-size:13px;color:var(--text-muted);">Your product is formulated with carefully selected ingredients.</p>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:52px;height:52px;border-radius:50%;background:var(--sage);color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;">4</div>
-            <h4 style="font-size:0.95rem;margin-bottom:6px;">Delivered</h4>
-            <p style="font-size:13px;color:var(--text-muted);">Your unique formula arrives at your door, ready to use.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Custom Products Form -->
-      <div class="form-card">
-        <h3>Custom Product Request</h3>
-        <p>Please be as detailed as possible — the more we know, the better we can formulate for you.</p>
-
-        <form onsubmit="handleFormSubmit(event, 'cp-success')">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cp-name">Full Name</label>
-              <input type="text" id="cp-name" placeholder="Your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="cp-age">Age</label>
-              <input type="number" id="cp-age" placeholder="e.g. 32" min="10" max="100">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cp-email">Email Address</label>
-              <input type="email" id="cp-email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="cp-phone">Phone / WhatsApp</label>
-              <input type="tel" id="cp-phone" placeholder="073 348 9717">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cp-skin-type">Skin Type</label>
-              <select id="cp-skin-type">
-                <option value="">Select skin type</option>
-                <option value="oily">Oily</option>
-                <option value="dry">Dry</option>
-                <option value="combination">Combination</option>
-                <option value="sensitive">Sensitive</option>
-                <option value="normal">Normal</option>
-                <option value="unsure">Not sure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="cp-hair-type">Hair Type</label>
-              <select id="cp-hair-type">
-                <option value="">Select hair type</option>
-                <option value="straight">Straight</option>
-                <option value="wavy">Wavy</option>
-                <option value="curly">Curly / Coily</option>
-                <option value="fine">Fine / Thin</option>
-                <option value="thick">Thick / Coarse</option>
-                <option value="na">Not applicable</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="cp-allergies">Known Allergies</label>
-            <textarea id="cp-allergies" placeholder="List any known allergies to ingredients (e.g. nuts, lanolin, fragrance, essential oils...)"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="cp-conditions">Skin / Scalp Conditions</label>
-            <textarea id="cp-conditions" placeholder="e.g. eczema, psoriasis, rosacea, dandruff, alopecia, hyperpigmentation..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="cp-medications">Current Medications (that may affect skin/hair)</label>
-            <textarea id="cp-medications" placeholder="Optional — helps us avoid any interactions"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="cp-current">Current Products You Use</label>
-            <textarea id="cp-current" placeholder="What are you currently using? What's working? What's not?"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="cp-goals">What Would You Like to Achieve?</label>
-            <textarea id="cp-goals" placeholder="e.g. reduce breakouts, grow hair faster, even skin tone, reduce scalp itch..." required></textarea>
-          </div>
-          <div class="form-submit-row">
-            <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
-            <p style="font-size:13px;color:var(--text-muted);">We'll follow up within 2–3 business days</p>
-          </div>
-        </form>
-        <div class="form-success" id="cp-success">
-          ✓ Thank you for your request! We'll review your profile and reach out within 2–3 business days to schedule your consultation.
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -503,15 +346,16 @@
           <li><a href="shop.html?cat=skincare">Skincare</a></li>
           <li><a href="shop.html?cat=haircare">Haircare</a></li>
           <li><a href="shop.html?cat=soaps">Soaps & Bars</a></li>
-          <li><a href="build-a-gift.html">Build Your Brand</a></li>
+          <li><a href="shop.html?cat=lip-care">Lip Care</a></li>
         </ul>
       </div>
       <div>
         <p class="footer-col-title">Business</p>
         <ul class="footer-links">
-          <li><a href="business-clients.html#white-label">White Label</a></li>
+          <li><a href="business-clients.html#configurator">Configure Your Order</a></li>
+          <li><a href="business-clients.html">White Label</a></li>
           <li><a href="business-clients.html#private-label">Private Label</a></li>
-          <li><a href="business-clients.html#custom">Custom Products</a></li>
+          <li><a href="corporate-gifting.html">Corporate Gifting</a></li>
         </ul>
       </div>
       <div>
@@ -538,5 +382,224 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var state = {
+    step: 1,
+    productId: null,
+    productName: null,
+    productPrice: null,
+    size: null,
+    pkg: null,
+    labels: null,
+    labelArt: null,
+    quantity: 20
+  };
+
+  var PRODUCTS = [
+    { id: 'moisture-boost',        name: 'Moisture Boost',          price: 85,  cat: 'Skincare',  color: 'linear-gradient(180deg,#d4a843,#a87830)' },
+    { id: 'spot-control',          name: 'Spot Control',            price: 85,  cat: 'Skincare',  color: 'linear-gradient(180deg,#c8b87a,#a09040)' },
+    { id: 'glow',                  name: 'Glow Rollerball',         price: 85,  cat: 'Skincare',  color: 'linear-gradient(180deg,#e8dfc4,#c8b498)' },
+    { id: 'aloe-ferox-gel',        name: 'Aloe Ferox Gel',          price: 95,  cat: 'Skincare',  color: 'linear-gradient(180deg,#c8e4d8,#a8ccc0)' },
+    { id: 'revive-scalp-oil',      name: 'Revive Scalp Oil',        price: 120, cat: 'Haircare',  color: 'linear-gradient(180deg,#7fa090,#4a7060)' },
+    { id: 'botanical-shampoo',     name: 'Botanical Shampoo',       price: 150, cat: 'Haircare',  color: 'linear-gradient(180deg,#f0ede8,#d4cdc4)' },
+    { id: 'botanical-conditioner', name: 'Botanical Conditioner',   price: 150, cat: 'Haircare',  color: 'linear-gradient(180deg,#e8e4de,#ccc6be)' },
+    { id: 'nourishing-hair-mask',  name: 'Nourishing Hair Mask',    price: 180, cat: 'Haircare',  color: 'linear-gradient(145deg,#e8e0cc,#d0c8b0)' },
+    { id: 'charcoal-mint-bar',     name: 'Charcoal Mint Bar',       price: 70,  cat: 'Soaps',     color: 'linear-gradient(145deg,#3a3a3a,#1e1e1e)' },
+    { id: 'bentonite-clay-bar',    name: 'Bentonite Clay Bar',      price: 75,  cat: 'Soaps',     color: 'linear-gradient(145deg,#d4a870,#b08850)' },
+    { id: 'sandalwood-bar',        name: 'Sandalwood Charcoal Bar', price: 70,  cat: 'Soaps',     color: 'linear-gradient(145deg,#9a7050,#6a4028)' },
+    { id: 'lavender-soap',         name: 'Lavender Facial Soap',    price: 65,  cat: 'Soaps',     color: 'linear-gradient(145deg,#b8a8d8,#9888c0)' },
+    { id: 'mystic-foot-cream',     name: 'Mystic Foot Cream',       price: 120, cat: 'Body',      color: 'linear-gradient(180deg,#e8dfc4,#d0c4a0)' },
+    { id: 'natural-lip-balm',      name: 'Natural Lip Balm',        price: 45,  cat: 'Lip Care',  color: 'linear-gradient(180deg,#f0d4b0,#d4a870)' }
+  ];
+
+  var grid = document.getElementById('config-product-grid');
+  if (!grid) return;
+
+  PRODUCTS.forEach(function (p) {
+    var card = document.createElement('div');
+    card.className = 'config-prod-card';
+    card.dataset.id = p.id;
+    card.innerHTML =
+      '<div class="config-prod-swatch" style="background:' + p.color + ';"></div>' +
+      '<div class="config-prod-info">' +
+        '<span class="config-prod-cat">' + p.cat + '</span>' +
+        '<p class="config-prod-name">' + p.name + '</p>' +
+        '<p class="config-prod-price">R' + p.price + '/unit</p>' +
+      '</div>';
+    card.addEventListener('click', function () {
+      document.querySelectorAll('.config-prod-card').forEach(function (c) { c.classList.remove('selected'); });
+      card.classList.add('selected');
+      state.productId = p.id;
+      state.productName = p.name;
+      state.productPrice = p.price;
+      document.getElementById('price-sample').textContent = 'R' + p.price;
+      document.getElementById('price-retail').textContent = 'R' + p.price;
+      updateSidebar();
+    });
+    grid.appendChild(card);
+  });
+
+  function setupOpts(selector, key, cb) {
+    document.querySelectorAll(selector).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll(selector).forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        state[key] = btn.dataset[key];
+        if (cb) cb(btn);
+        updateSidebar();
+      });
+    });
+  }
+
+  setupOpts('[data-size]', 'size', null);
+  setupOpts('[data-pkg]', 'pkg', null);
+  setupOpts('[data-labels]', 'labels', function (btn) {
+    var show = btn.dataset.labels === 'yes';
+    document.getElementById('config-label-opts').style.display = show ? 'block' : 'none';
+    if (!show) { state.labelArt = null; document.querySelectorAll('[data-labelart]').forEach(function (b) { b.classList.remove('active'); }); }
+    updateMoq();
+  });
+  setupOpts('[data-labelart]', 'labelArt', null);
+
+  var qtyInput = document.getElementById('qty-val');
+  document.getElementById('qty-minus').addEventListener('click', function () {
+    var v = parseInt(qtyInput.value, 10) || 1;
+    if (v > 1) { qtyInput.value = v - 1; state.quantity = v - 1; updateMoq(); updateSidebar(); }
+  });
+  document.getElementById('qty-plus').addEventListener('click', function () {
+    var v = parseInt(qtyInput.value, 10) || 1;
+    qtyInput.value = v + 1; state.quantity = v + 1; updateMoq(); updateSidebar();
+  });
+  qtyInput.addEventListener('input', function () {
+    state.quantity = Math.max(1, parseInt(this.value, 10) || 1);
+    updateMoq(); updateSidebar();
+  });
+
+  function updateMoq() {
+    var notice = document.getElementById('config-moq-notice');
+    if (state.labels === 'yes' && state.quantity < 20) {
+      notice.style.display = 'block';
+      notice.className = 'config-moq-notice moq-warn';
+      notice.innerHTML = '<strong>Note:</strong> A once-off <strong>R200 label setup fee</strong> applies for first orders under 20 units with labels. After your first order, you can reorder any quantity without the fee.';
+    } else if (state.labels === 'yes') {
+      notice.style.display = 'block';
+      notice.className = 'config-moq-notice moq-ok';
+      notice.innerHTML = '&#10003; Minimum order quantity met — no label setup fee applies.';
+    } else {
+      notice.style.display = 'none';
+    }
+  }
+
+  function getCalc() {
+    if (!state.productPrice || !state.size || state.size === '1l' || state.size === '5l') return null;
+    var unit = state.productPrice + (state.pkg === 'branded' ? 15 : 0);
+    var setup = (state.labels === 'yes' && state.quantity < 20) ? 200 : 0;
+    return { unit: unit, setup: setup, total: unit * state.quantity + setup };
+  }
+
+  function updateSidebar() {
+    var content = document.getElementById('config-sidebar-content');
+    var totalBox = document.getElementById('config-sidebar-total');
+    var rows = [];
+    if (state.productName) rows.push('<div class="sb-row"><span>Product</span><span>' + state.productName + '</span></div>');
+    var sizeMap = { sample: 'Sample', retail: 'Retail Ready', '1l': '1L Bulk', '5l': '5L Bulk' };
+    var pkgMap = { branded: 'Branded', plain: 'Plain', none: 'None' };
+    if (state.size) rows.push('<div class="sb-row"><span>Size</span><span>' + (sizeMap[state.size] || state.size) + '</span></div>');
+    if (state.pkg) rows.push('<div class="sb-row"><span>Packaging</span><span>' + (pkgMap[state.pkg] || state.pkg) + '</span></div>');
+    if (state.labels) rows.push('<div class="sb-row"><span>Labels</span><span>' + (state.labels === 'yes' ? 'Yes' : 'No') + '</span></div>');
+    if (state.quantity) rows.push('<div class="sb-row"><span>Quantity</span><span>' + state.quantity + ' units</span></div>');
+    content.innerHTML = rows.length ? rows.join('') : 'Select a product to begin.';
+    content.className = rows.length ? 'config-sidebar-rows' : 'config-sidebar-empty';
+    var calc = getCalc();
+    if (calc) {
+      totalBox.style.display = 'block';
+      document.getElementById('sb-unit-price').textContent = 'R' + calc.unit + '/unit';
+      document.getElementById('sb-setup-row').style.display = calc.setup ? 'flex' : 'none';
+      document.getElementById('sb-total').textContent = 'R' + calc.total.toLocaleString('en-ZA');
+    } else if (state.size === '1l' || state.size === '5l') {
+      totalBox.style.display = 'block';
+      document.getElementById('sb-unit-price').textContent = 'Price on request';
+      document.getElementById('sb-setup-row').style.display = 'none';
+      document.getElementById('sb-total').textContent = 'Quote required';
+    } else {
+      totalBox.style.display = 'none';
+    }
+  }
+
+  var prevBtn = document.getElementById('config-prev');
+  var nextBtn = document.getElementById('config-next');
+
+  function goToStep(n) {
+    document.querySelectorAll('.config-step').forEach(function (s) { s.classList.remove('active'); });
+    document.getElementById('config-step-' + n).classList.add('active');
+    document.querySelectorAll('.config-progress-step').forEach(function (s) {
+      var sn = parseInt(s.dataset.step, 10);
+      s.classList.toggle('active', sn === n);
+      s.classList.toggle('done', sn < n);
+    });
+    state.step = n;
+    prevBtn.style.display = n > 1 ? '' : 'none';
+    nextBtn.style.display = n < 6 ? '' : 'none';
+    if (n === 6) buildSummary();
+    var el = document.getElementById('configurator');
+    if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+  }
+
+  function buildSummary() {
+    var isBulk = state.size === '1l' || state.size === '5l';
+    var calc = getCalc();
+    var sizeLabel = ({ sample: 'Sample', retail: 'Retail Ready', '1l': '1L Bulk', '5l': '5L Bulk' })[state.size] || '&#8212;';
+    var pkgLabel = ({ branded: 'Branded packaging', plain: 'Plain packaging', none: 'No packaging' })[state.pkg] || '&#8212;';
+    var labLabel = state.labels === 'yes'
+      ? 'Yes &#8212; ' + (state.labelArt === 'upload' ? 'I\'ll upload artwork' : 'Design assistance requested')
+      : 'No labels needed';
+    var html = '<div class="config-summary-table">' +
+      '<div class="sb-row"><span>Product</span><span>' + (state.productName || '&#8212;') + '</span></div>' +
+      '<div class="sb-row"><span>Size</span><span>' + sizeLabel + '</span></div>' +
+      '<div class="sb-row"><span>Packaging</span><span>' + pkgLabel + '</span></div>' +
+      '<div class="sb-row"><span>Labels</span><span>' + labLabel + '</span></div>' +
+      '<div class="sb-row"><span>Quantity</span><span>' + state.quantity + ' units</span></div>';
+    if (!isBulk && calc) {
+      html += '<div class="sb-row"><span>Unit price</span><span>R' + calc.unit + '</span></div>';
+      if (calc.setup) html += '<div class="sb-row"><span>Label setup (once-off)</span><span>R' + calc.setup + '</span></div>';
+      html += '<div class="sb-row sb-row-total"><span>Estimated total</span><span>R' + calc.total.toLocaleString('en-ZA') + '</span></div>';
+    } else {
+      html += '<div class="sb-row sb-row-total"><span>Pricing</span><span>Quote required</span></div>';
+    }
+    html += '</div>';
+    document.getElementById('config-summary-detail').innerHTML = html;
+
+    var brief = document.getElementById('config-brief');
+    var actions = document.getElementById('config-final-actions');
+    actions.innerHTML = '<button class="btn btn-primary btn-lg" id="config-submit-quote">Request a Quote via WhatsApp</button>' +
+      '<a href="mailto:info@b-real.co.za" class="btn btn-outline-dark btn-lg">Email Your Enquiry</a>' +
+      '<span class="config-response-note">We respond within 1&#8211;2 business days</span>';
+    document.getElementById('config-submit-quote').addEventListener('click', function () {
+      var note = brief ? brief.value : '';
+      var msg = 'CREATE YOUR BRAND ENQUIRY\n\nProduct: ' + (state.productName || 'Not selected') +
+        '\nSize: ' + sizeLabel.replace(/&#8212;/g, '-') +
+        '\nPackaging: ' + pkgLabel.replace(/&#8212;/g, '-') +
+        '\nLabels: ' + labLabel.replace(/&#8212;/g, '-').replace(/&#8211;/g, '-') +
+        '\nQuantity: ' + state.quantity + ' units' +
+        (calc ? '\nEstimated total: R' + calc.total.toLocaleString('en-ZA') : '\nPricing: Quote required') +
+        (note ? '\n\nBrand brief:\n' + note : '');
+      window.open('https://wa.me/27733489717?text=' + encodeURIComponent(msg), '_blank');
+    });
+  }
+
+  nextBtn.addEventListener('click', function () {
+    var next = state.step + 1;
+    if (state.step === 2 && (state.size === '1l' || state.size === '5l')) next = 5;
+    if (next <= 6) goToStep(next);
+  });
+
+  prevBtn.addEventListener('click', function () {
+    var prev = state.step - 1;
+    if (state.step === 5 && (state.size === '1l' || state.size === '5l')) prev = 2;
+    if (prev >= 1) goToStep(prev);
+  });
+})();
+</script>
 </body>
 </html>

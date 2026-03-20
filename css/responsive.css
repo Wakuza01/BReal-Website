@@ -273,4 +273,44 @@ body {
 
   /* Email popup */
   .email-popup-card { padding: 32px 18px 24px; }
+
+  /* Create Your Brand */
+  .cyb-services-grid { grid-template-columns: 1fr; }
+  .cyb-options-grid { grid-template-columns: 1fr; }
+  .cyb-hiw-grid { grid-template-columns: repeat(2, 1fr); }
+  .cyb-why-grid { grid-template-columns: repeat(3, 1fr); }
+  .cyb-packages-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cyb-moq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .config-body { grid-template-columns: 1fr; }
+  .config-sidebar { position: static; }
+  .config-product-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .cyb-hero h1 { font-size: 2rem; }
+
+  /* Corporate Gifting */
+  .cg-intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cg-perfect-grid { grid-template-columns: repeat(2, 1fr); }
+  .cg-offer-grid { grid-template-columns: repeat(2, 1fr); }
+  .cg-custom-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cg-custom-visual { display: none; }
+  .cg-inspo-grid { grid-template-columns: repeat(2, 1fr); }
+  .cg-form-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .cg-form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  /* Create Your Brand */
+  .cyb-hiw-grid { grid-template-columns: 1fr; }
+  .cyb-why-grid { grid-template-columns: repeat(2, 1fr); }
+  .cyb-hero-actions { flex-direction: column; }
+  .cyb-cta-actions { flex-direction: column; align-items: center; }
+  .config-options-row { grid-template-columns: 1fr 1fr; }
+  .config-steps-panel { padding: 24px 18px; }
+  .config-progress { gap: 0; justify-content: flex-start; overflow-x: auto; }
+  .config-progress-line { min-width: 16px; }
+
+  /* Corporate Gifting */
+  .cg-perfect-grid { grid-template-columns: 1fr; }
+  .cg-offer-grid { grid-template-columns: 1fr; }
+  .cg-inspo-grid { grid-template-columns: 1fr; }
+  .cg-hero h1 { font-size: 1.8rem; }
 }
